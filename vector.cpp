@@ -7,7 +7,7 @@ class Vector3{
     public:
 
     //konstruktor
-    Vector3(int a, int b, int c){ x=a; y=b; z=c;};
+    Vector3(double a,double b,double c){ x=a; y=b; z=c;};
 
 
     //przeciazenia operatorow
