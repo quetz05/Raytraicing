@@ -1,6 +1,7 @@
 #include <math.h>
 
-
+#ifndef VECTOR3D
+#define VECTOR3D
 //klasa wektor
 class Vector3{
 
@@ -48,3 +49,4 @@ class Vector3{
     double z;
 
 };
+#endif
