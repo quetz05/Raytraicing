@@ -16,6 +16,8 @@ class Vector3{
     Vector3 operator -(const Vector3 &vector){return Vector3(this->x - vector.x, this->y - vector.y, this->z - vector.z );};
     Vector3 operator *(double value){return Vector3(this->x *value, this->y *value, this->z *value);};
     Vector3 operator /(double value){return Vector3(this->x /value, this->y /value, this->z /value);};
+    Vector3 &operator =(const Vector3 &vector);
+    bool operator ==(const Vector3 &vector);
 
 
     //iloczyn skalarny:
@@ -49,4 +51,23 @@ class Vector3{
     double z;
 
 };
+
+Vector3 &Vector3::operator =(const Vector3 &vector)
+{
+    this->x = vector.x;
+    this->y = vector.y;
+    this->z = vector.z;
+
+    return *this;
+};
+
+bool Vector3::operator ==(const Vector3 &vector)
+{
+    if(( this->x == vector.x ) &&( this->y == vector.y ) && (this->z == vector.z) )
+         return true;
+    else
+         return false;
+
+};
+
 #endif
