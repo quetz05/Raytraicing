@@ -1,5 +1,6 @@
 #include <limits>
 #include "vector.h"
+
 #ifndef RAY
 #define RAY
 #define EPSILON 0.00001
