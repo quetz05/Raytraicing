@@ -2,12 +2,12 @@
 #include <QColor>
 
 
-class GeometricObject {
+class Geometric_object {
 
     public:
 
     virtual bool HitTest(VRay ray, double &distance);
-    QColor getColor(){return color;};
+    QColor getColor();
     void setColor(QColor newColor){color = newColor;};
 
 
@@ -27,7 +27,7 @@ class Sphere: GeometricObject {
     {
         center = newCenter;
         radius = newRadius;
-        color = newColor;
+        color = this->setColor(newColor);
     }
 
     bool HitTest(VRay ray, double &distance)

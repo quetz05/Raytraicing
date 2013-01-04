@@ -15,14 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     camera.cpp \
-    world.cpp
+    world.cpp \
+    ../geometric_objects.cpp
 
 HEADERS  += mainwindow.h \
     camera.h \
-    geometricObjects.h \
     hit_info.h \
     ray.h \
     vector.h \
-    world.h
+    world.h \
+    geometric_objects.h
 
 FORMS    += mainwindow.ui
