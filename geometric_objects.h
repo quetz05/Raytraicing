@@ -9,7 +9,7 @@ class Geometric_object {
     public:
 
         /**funkcja sprawdzająca trafienie promienia w figurę*/
-        virtual bool HitTest(VRay ray, double &distance);
+        virtual bool const HitTest(VRay ray, double &distance);
         /**funkcja zwracająca kolor figury*/
         QColor getColor();
         /**funkcja ustawiająca kolor figury*/
