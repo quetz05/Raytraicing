@@ -1,4 +1,4 @@
-#include<QVector>
+#include<QList>
 #include"geometric_objects.h"
 #include"hit_info.h"
 #include"ray.h"
@@ -15,7 +15,9 @@ public:
 
 
 private:
-    QVector<Geometric_object> objects;
+
+    QList<Geometric_object> objects;
+
     QColor background_color;
 };
 

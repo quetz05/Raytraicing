@@ -16,12 +16,13 @@ hit_info World::TraceRay(VRay ray){
     //nieskonczoność
     double hit_distance = 0;//odleglosc trafienia
     for(int i =0;i<this->objects.size();++i){
-        if(objects.at(i).HitTest(ray,hit_distance)
+        if((objects.at(i)).HitTest(ray,hit_distance)
                 && hit_distance<minimaldistance){
             //jesli najblizsze trafienie to przypisujemy odleglosc
             minimaldistance=hit_distance;
             result.hit_object=true;
-            result.color=objects.at(i).getColor();
+            result.color=(objects.at(i)).getColor();
+	
         }
     }
     return result;
