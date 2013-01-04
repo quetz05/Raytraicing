@@ -27,16 +27,16 @@ class Sphere: Geometric_object {
 
     public:
 
+        /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i kolorze*/
         Sphere(Vector3 newCenter, double newRadius, QColor newColor);
-
-
-    bool const HitTest(VRay ray, double &minDistance);
+        /**funkcja sprawdzająca trafienie promienia w figurę*/
+        bool const HitTest(VRay ray, double &minDistance);
 
     private:
 
-    /**środek kuli*/
+    /**zmienna określająca środek kuli*/
     Vector3 center;
-    /**promień*/
+    /**zmienna określająca promień kuli*/
     double radius;
 
 };

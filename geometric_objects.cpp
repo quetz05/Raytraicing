@@ -23,27 +23,27 @@ Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
 bool const Sphere::HitTest(VRay ray, double &minDistance){
 
     double t;
-    Vector3 distance = ray.Origin - center;
+    Vector3 distance = ray.origin - center;
 
-    double a = ray.Direction.LengthSq;
-    double b = (distance * 2).Dot(ray.Direction);
-    double c = distance.LengthSq - radius * radius;
+    double a = ray.direction.getLengthSq();
+    double b = (distance * 2).dot(ray.direction);
+    double c = distance.getLengthSq() - radius * radius;
 
     double disc = b * b - 4 * a * c;
 
     if (disc < 0)
         return false;
 
-    double discSq = Math.Sqrt(disc);
+    double discSq = sqrt(disc);
 
     double denom = 2 * a;
 
     t = (-b - discSq) / denom;
 
-    if (t < Ray.Epsilon)
+    if (t < EPSILON)
         t = (-b + discSq) / denom;
 
-    if (t < Ray.Epsilon)
+    if (t < EPSILON)
         return false;
 
     minDistance = t;
