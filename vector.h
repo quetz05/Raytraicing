@@ -8,8 +8,9 @@ class Vector3{
     public:
 
     //konstruktor
-    Vector3(double a,double b,double c){ x=a; y=b; z=c;};
-
+    Vector3(){x=0;y=0;z=0;}
+    Vector3(double a,double b,double c){ x=a; y=b; z=c;}
+    Vector3(Vector3 &v): x(v.x),y(v.y),z(v.z){}
 
     //przeciazenia operatorow
     Vector3 operator +(const Vector3 &vector){return Vector3(this->x + vector.x, this->y + vector.y, this->z + vector.z );};
@@ -51,10 +52,12 @@ class Vector3{
     double z;
 
 };
+
 struct Vector2{
 	double x;
 	double y;
     inline Vector2(double a, double b){x=a;y=b;}
+    inline Vector2(): x(0),y(0){}
 };
 
 Vector3 &Vector3::operator =(const Vector3 &vector)
@@ -64,7 +67,7 @@ Vector3 &Vector3::operator =(const Vector3 &vector)
     this->z = vector.z;
 
     return *this;
-};
+}
 
 bool Vector3::operator ==(const Vector3 &vector)
 {
@@ -73,6 +76,6 @@ bool Vector3::operator ==(const Vector3 &vector)
     else
          return false;
 
-};
+}
 
 #endif

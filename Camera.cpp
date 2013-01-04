@@ -1,8 +1,10 @@
 
 #include"Camera.h"
 #include<math.h>
+#include"ray.h"
 
-Orthogonal::GetRayTo(Vector2 pictureLocation) {
+
+VRay Orthogonal::GetRayTo(Vector2 pictureLocation) {
     //kierunek w kt�rym jest skierowane s� promienie wychodz�ce
     // z kamery 
     Vector3 direction(sin(angle), 0, cos(angle));
@@ -17,10 +19,10 @@ Orthogonal::GetRayTo(Vector2 pictureLocation) {
             eye_position.getY() + offset_center.y,
             eye_position.getZ() + offset_center.x * sin(angle));
 
-    return VRayy(position, direction);
+    return VRay(position, direction);
 }
 
-Orthogonal::orthogonal(Vector3 eye, double angle1, Vector2 size) {
+Orthogonal::Orthogonal(Vector3 eye, double angle1, Vector2 size) {
     eye_position = eye;
     camera_size = size;
     angle = angle1;
