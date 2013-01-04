@@ -1,5 +1,5 @@
 #include<QVector>
-#include"geometricObjects.h"
+#include"geometric_objects.h"
 #include"hit_info.h"
 #include"ray.h"
 

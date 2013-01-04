@@ -1,9 +1,16 @@
 #include "geometric_objects.h"
 
-QColor getColor(){
+QColor Geometric_object::getColor(){
     return color;
 }
 
-void setColor(QColor newColor){
+void Geometric_object::setColor(QColor newColor){
     color = newColor;
 }
+
+Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
+    center = newCenter;
+    radius = newRadius;
+    color = newColor;
+}
+
