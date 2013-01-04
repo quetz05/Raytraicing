@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     camera.cpp \
     world.cpp \
-geometric_objects.cpp
+geometric_objects.cpp \
+    raytracer.cpp
 
 HEADERS  += mainwindow.h \
     camera.h \

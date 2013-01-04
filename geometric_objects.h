@@ -3,6 +3,9 @@
 #include "vector.h"
 #include <QColor>
 
+#ifndef GEO_OBJECTS
+#define GEO_OBJECTS
+
 /**klasa bazowa figury geometrycznej*/
 class Geometric_object {
 
@@ -40,3 +43,5 @@ class Sphere: Geometric_object {
     double radius;
 
 };
+
+#endif
