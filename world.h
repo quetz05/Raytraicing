@@ -10,12 +10,12 @@ class World
 {
 public:
     World(QColor background);
-    void add(GeometricObject obj);
+    void add(Geometric_object obj);
     hit_info TraceRay(VRay ray);
 
 
 private:
-    QVector<GeometricObject> objects;
+    QVector<Geometric_object> objects;
     QColor background_color;
 };
 

@@ -6,7 +6,7 @@ World::World(QColor background){
 
 }
 
-void World::add(GeometricObject obj){
+void World::add(Geometric_object obj){
     objects.push_back(obj);
 }
 
