@@ -17,7 +17,7 @@ Orthogonal::GetRayTo(Vector2 pictureLocation) {
             eye_position.getY() + offset_center.y,
             eye_position.getZ() + offset_center.x * sin(angle));
 
-    return Ray(position, direction);
+    return VRayy(position, direction);
 }
 
 Orthogonal::orthogonal(Vector3 eye, double angle1, Vector2 size) {

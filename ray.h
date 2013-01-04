@@ -5,9 +5,9 @@
 #define RAY
 #define EPSILON 0.00001
 #define HUGE numeric_limits<double>::max();
-struct Ray{
+struct VRay{
 
-    Ray(Vector3 origin, Vector3 direction){
+    VRay(Vector3 origin, Vector3 direction){
         this->origin = origin;
         this->direction = direction;
     }

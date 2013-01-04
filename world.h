@@ -11,7 +11,7 @@ class World
 public:
     World(QColor background);
     void add(GeometricObject obj);
-    hit_info TraceRay(Ray ray);
+    hit_info TraceRay(VRay ray);
 
 
 private:

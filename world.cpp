@@ -10,7 +10,7 @@ void World::add(GeometricObject obj){
     objects.push_back(obj);
 }
 
-hit_info World::TraceRay(Ray ray){
+hit_info World::TraceRay(VRay ray){
     hit_info result;
     double minimaldistance = HUGE;//najblizsze trafienie
     //nieskonczoność

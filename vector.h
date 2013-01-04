@@ -54,7 +54,7 @@ class Vector3{
 struct Vector2{
 	double x;
 	double y;
-	inline Vector2(double a, double b){x=a;y=b}
+    inline Vector2(double a, double b){x=a;y=b;}
 };
 
 Vector3 &Vector3::operator =(const Vector3 &vector)

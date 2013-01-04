@@ -6,7 +6,7 @@ class GeometricObject {
 
     public:
 
-    virtual bool HitTest(Ray ray, double &distance);
+    virtual bool HitTest(VRay ray, double &distance);
     QColor getColor(){return color;};
     void setColor(QColor newColor){color = newColor;};
 
@@ -30,7 +30,7 @@ class Sphere: GeometricObject {
         color = newColor;
     }
 
-    bool HitTest(Ray ray, double &distance)
+    bool HitTest(VRay ray, double &distance)
     {
         //@to do
     }
