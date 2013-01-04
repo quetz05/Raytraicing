@@ -8,7 +8,7 @@ class Geometric_object {
 
     public:
 
-        /**funkcja sprawdzająca trafienie promienia w figurę*/
+        /**funkcja sprawdzająca czy promień trafił w figurę*/
         virtual bool const HitTest(VRay ray, double &distance);
         /**funkcja zwracająca kolor figury*/
         QColor getColor();
@@ -29,7 +29,7 @@ class Sphere: Geometric_object {
 
         /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i kolorze*/
         Sphere(Vector3 newCenter, double newRadius, QColor newColor);
-        /**funkcja sprawdzająca trafienie promienia w figurę*/
+        /**funkcja sprawdzająca czy promień trafił w seferę*/
         bool const HitTest(VRay ray, double &minDistance);
 
     private:

@@ -1,5 +1,4 @@
 /**Plik źródłowy zawierający definicje funkcji klas obiektów geometrycznych*/
-
 #include "geometric_objects.h"
 
 /**definicja funkcji getColor obiektu*/
@@ -22,30 +21,39 @@ Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
 /**definicja funkcji HitTest*/
 bool const Sphere::HitTest(VRay ray, double &minDistance){
 
+    //rozwiązanie równania kwadratowego
     double t;
+    //dystans początku promienia od środka sfery
     Vector3 distance = ray.origin - center;
 
+    //obliczanie współczynników równania kwadratowego
+    //na podstawie przekształceń równań na promień i na kulę
     double a = ray.direction.getLengthSq();
-    double b = (distance * 2).dot(ray.direction);
-    double c = distance.getLengthSq() - radius * radius;
+    double b = (distance*2).dot(ray.direction);
+    double c = distance.getLengthSq() - radius*radius;
 
-    double disc = b * b - 4 * a * c;
+    //obliczenie delty
+    double delta = b*b-4*a*c;
 
-    if (disc < 0)
+    //jeśli delta < 0 - promień nie trafił w kulę
+    if (delta < 0)
         return false;
 
-    double discSq = sqrt(disc);
+    //pierwiastek z delty
+    double deltaSq = sqrt(delta);
 
-    double denom = 2 * a;
+    //obliczanie t1
+    t = (-b - deltaSq)/(2*a);
 
-    t = (-b - discSq) / denom;
-
+    //jeśli t1 jest zbyt małe obliczanie t2
     if (t < EPSILON)
-        t = (-b + discSq) / denom;
+        t = (-b + deltaSq)/(2*a);
 
+    //jeśli oba rozwiązania są zbyt małe - promień nie trafił w kulę
     if (t < EPSILON)
         return false;
 
+    //przypisanie wartości rozwiązania do minimalnej odległości
     minDistance = t;
 
     return true;
