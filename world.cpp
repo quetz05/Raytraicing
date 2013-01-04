@@ -1,5 +1,5 @@
 #include "world.h"
-
+#include"hit_info.h"
 
 World::World(QColor background){
     this->background_color=background;
@@ -21,7 +21,7 @@ hit_info World::TraceRay(VRay ray){
             //jesli najblizsze trafienie to przypisujemy odleglosc
             minimaldistance=hit_distance;
             result.hit_object=true;
-            result.color=objjects.at(i).getColor();
+            result.color=objects.at(i).getColor();
         }
     }
     return result;
