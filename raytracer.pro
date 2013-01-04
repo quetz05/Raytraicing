@@ -15,8 +15,7 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     camera.cpp \
-    world.cpp \
-    ../geometric_objects.cpp
+    world.cpp
 
 HEADERS  += mainwindow.h \
     camera.h \
