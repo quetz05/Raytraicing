@@ -10,7 +10,7 @@ public:
 	virtual VRay GetRayTo(Vector2 relativeLocation)=0;
 };
 
-class Orthogonal : Vcamera{
+class Orthogonal : public Vcamera{
 public:
     Orthogonal(Vector3 eye, double angle1, Vector2 size);
     virtual VRay GetRayTo(Vector2 relativeLocation);

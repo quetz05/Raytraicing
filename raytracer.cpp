@@ -2,7 +2,7 @@
 
 
 /**definicja metody RayTrace*/
-QImage RayTrace(World world, Vcamera &camera, QSize image_size){
+QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
 
     //tworzenie zmiennej przechowującej mapę
     QImage pixmap = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);

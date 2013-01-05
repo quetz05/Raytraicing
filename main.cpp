@@ -12,18 +12,24 @@ int main(int argc, char *argv[])
 
     //dodanie kul
      world.add(new Sphere(Vector3(-2.5, 0, 0), 2, QColor(255,0,0)));
-   // world.add(Sphere(Vector3(2.5, 0, 0), 2, QColor(0,255,0)));
-    //world.add(Sphere(Vector3(0, 0, 2.5), 2, QColor(0,0,0)));
+     world.add(new Sphere(Vector3(2.5, 0, 0), 2, QColor(0,255,0)));
+     world.add(new Sphere(Vector3(0, 0, 2.5), 2, QColor(0,0,0)));
 
     Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-    Raytracer  tracer();
+
+    Raytracer tracer;
+
     // Raytracing!
-   // QImage image = tracer.RayTrace(world, camera, QSize(256, 256));
+    QImage image = tracer.RayTrace(world, camera, QSize(256, 256));
+
+
+    QPixmap pixmap = QPixmap::fromImage(image);
 
 
 
     QApplication a(argc, argv);
     MainWindow w;
+    w.show_pixmap(pixmap);
     w.show();
     
     return a.exec();

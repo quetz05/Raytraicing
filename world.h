@@ -3,6 +3,7 @@
 #include"hit_info.h"
 #include"ray.h"
 
+
 #ifndef WORLD_H
 #define WORLD_H
 

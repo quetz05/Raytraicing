@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QWidget>
+#include <QLayout>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +17,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void show_pixmap(QPixmap&);
     
 private:
     Ui::MainWindow *ui;
