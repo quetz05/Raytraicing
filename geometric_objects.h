@@ -7,7 +7,7 @@
 #define GEO_OBJECTS
 
 /**klasa bazowa figury geometrycznej*/
-class Geometric_object {
+class GeometricObject {
 
     public:
 
@@ -26,7 +26,7 @@ class Geometric_object {
 };
 
 /**klasa pochodna figury opisująca sferę (kulę)*/
-class Sphere: Geometric_object {
+class Sphere: GeometricObject {
 
     public:
 

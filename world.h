@@ -6,18 +6,23 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+/**klasa odpowiedzialna za tworzenie świata przedstawianego, który widzi użytkownik*/
 class World
 {
 public:
+
+    /**konstruktor klasy World tworzący świat o danym kolorze tła*/
     World(QColor background);
-    void add(Geometric_object obj);
+    /**funkcja dodająca do "świata" obiekty geometryczne*/
+    void add(GeometricObject obj);
     hit_info TraceRay(VRay ray);
 
 
 private:
 
-    QList<Geometric_object> objects;
-
+    /**lista obiektów geometrycznych znajdujących się w danym świecie*/
+    QList<GeometricObject> objects;
+    /**kolor tła "świata"*/
     QColor background_color;
 };
 

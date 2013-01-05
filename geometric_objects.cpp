@@ -2,12 +2,12 @@
 #include "geometric_objects.h"
 
 /**definicja funkcji getColor obiektu*/
-QColor Geometric_object::getColor(){
+QColor GeometricObject::getColor(){
     return color;
 }
 
 /**definicja funkcji setColor obiektu*/
-void Geometric_object::setColor(QColor newColor){
+void GeometricObject::setColor(QColor newColor){
     color = newColor;
 }
 

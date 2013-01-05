@@ -1,12 +1,14 @@
 #include "world.h"
 #include"hit_info.h"
 
+/**definicja konstruktora klasy World*/
 World::World(QColor background){
     this->background_color=background;
 
 }
 
-void World::add(Geometric_object obj){
+/**definicja metody add klasy World*/
+void World::add(GeometricObject obj){
     objects.push_back(obj);
 }
 
