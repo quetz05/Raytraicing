@@ -22,6 +22,7 @@ QColor World::get_bg_color(){
 HitInfo World::TraceRay(VRay ray){
 
     HitInfo result;
+    result.hit_object=false;
     double minimaldistance = HUGE;//najblizsze trafienie
     //nieskonczoność
     //ostatnia odległość trafienia

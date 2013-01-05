@@ -14,7 +14,7 @@ MainWindow::~MainWindow(){
 
 }
 
-void MainWindow::show_pixmap(QPixmap& pixmap){
+void MainWindow::show_pixmap(QImage& image){
 
     QWidget* widget = centralWidget();
     QLayout* layout = new QHBoxLayout();
@@ -22,5 +22,5 @@ void MainWindow::show_pixmap(QPixmap& pixmap){
 
     widget->setLayout(layout);
     layout->addWidget(label);
-    label->setPixmap(pixmap);
+    label->setPixmap(QPixmap::fromImage(image));
 }

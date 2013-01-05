@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void show_pixmap(QPixmap&);
+    void show_pixmap(QImage&);
     
 private:
     Ui::MainWindow *ui;

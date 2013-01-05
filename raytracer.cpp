@@ -5,7 +5,7 @@
 QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
 
     //tworzenie zmiennej przechowującej mapę
-    QImage pixmap = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);
+    QImage image = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);
 
     //zapełnianie mapy
     for(int i = 0; i < image_size.width(); i++)
@@ -25,10 +25,10 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
             else
                 color = world.get_bg_color();
 
-            pixmap.setPixel(i, j, color.rgb());
+            image.setPixel(i, j, color.rgb());
         }
 
-       return pixmap;
+       return image;
 }
 
 
