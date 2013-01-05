@@ -15,6 +15,7 @@ public:
     World(QColor background);
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject obj);
+    /**funkcja odpowiedzialna za śledzenie promienia*/
     HitInfo TraceRay(VRay ray);
 
 
