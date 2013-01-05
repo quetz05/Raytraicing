@@ -7,7 +7,7 @@
 
 class Vcamera {
 public:
-    virtual VRay GetRayTo(Vector2 relativeLocation);
+	virtual VRay GetRayTo(Vector2 relativeLocation)=0;
 };
 
 class Orthogonal : Vcamera{

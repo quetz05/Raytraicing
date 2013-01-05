@@ -1,8 +1,10 @@
 /**nagłówek z klasą wektora trójwymiarowego i dwuwymiarowego*/
-#include <math.h>
+
 
 #ifndef VECTOR3D
 #define VECTOR3D
+
+#include <math.h>
 /**klasa wektora trójwymiarowego*/
 class Vector3{
 
@@ -24,7 +26,7 @@ class Vector3{
         /**przeciążenie operatora dzielenia przez skalar dwóch wektorów trójwymiarowych*/
         Vector3 operator /(double value){return Vector3(this->x /value, this->y /value, this->z /value);}
         /**przeciążenie operatora przypisania dla wektorów trójwymiarowych*/
-        Vector3 &operator =(const Vector3 &vector);
+        Vector3& operator =( Vector3 const &vector);
         /**przeciążenie operatora porówniania dwóch wektorów trójwymiarowych*/
         bool operator ==(const Vector3 &vector);
 
@@ -81,25 +83,5 @@ struct Vector2{
     /**kontruktor bezargumentowy (tworzy wektor [0,0])*/
     inline Vector2(): x(0),y(0){}
 };
-
-/**definicja przeciążenia operatora przypisania dla wektorów trójwymiarowych*/
-Vector3 &Vector3::operator =(const Vector3 &vector){
-
-    this->x = vector.x;
-    this->y = vector.y;
-    this->z = vector.z;
-
-    return *this;
-}
-
-/**definicja przeciążenia operatora porównania wektorów trójwymiarowych*/
-bool Vector3::operator ==(const Vector3 &vector){
-
-    if(( this->x == vector.x ) &&( this->y == vector.y ) && (this->z == vector.z) )
-         return true;
-    else
-         return false;
-
-}
 
 #endif

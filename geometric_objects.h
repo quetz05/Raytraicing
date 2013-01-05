@@ -1,10 +1,11 @@
 /**nagłówek zawierający deklaracje klas figur geoemtrycznych oraz ich metod i zmiennych*/
-#include "ray.h"
-#include "vector.h"
-#include <QColor>
-
 #ifndef GEO_OBJECTS
 #define GEO_OBJECTS
+
+#include "ray.h"
+//#include "vector.h"
+#include <QColor>
+
 
 /**klasa bazowa figury geometrycznej*/
 class GeometricObject {
