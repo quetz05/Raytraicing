@@ -2,6 +2,7 @@
 #include"geometric_objects.h"
 #include"hit_info.h"
 #include"ray.h"
+#include"point_light.h"
 
 
 #ifndef WORLD_H
@@ -16,6 +17,8 @@ public:
     World(QColor background);
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject *obj);
+    /**funkcja dodająca do "świata" punkty światła*/
+    void add_light(PointLight light);
     /**funkcja odpowiedzialna za śledzenie promienia*/
     HitInfo TraceRay(VRay ray);
     /**funkcja zwracająca kolor tła*/
@@ -24,6 +27,8 @@ public:
 
 private:
 
+    /**lista punktów światła znajdujących się w danym świecie*/
+    QList<PointLight> lights;
     /**lista obiektów geometrycznych znajdujących się w danym świecie*/
     QList<GeometricObject*> objects;
     /**kolor tła "świata"*/

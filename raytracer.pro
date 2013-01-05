@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     world.cpp \
 geometric_objects.cpp \
     raytracer.cpp \
-    vector.cpp
+    vector.cpp \
+    materials.cpp
 
 HEADERS  += mainwindow.h \
     camera.h \
@@ -29,6 +30,6 @@ HEADERS  += mainwindow.h \
     geometric_objects.h \
     raytracer.h \
     point_light.h \
-    material.h
+    materials.h
 
 FORMS    += mainwindow.ui
