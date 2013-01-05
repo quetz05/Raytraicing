@@ -1,7 +1,8 @@
 #include <QColor>
 #ifndef HIT_INFO_H
 #define HIT_INFO_H
-struct hit_info{
+
+struct HitInfo{
     bool hit_object;
     QColor color;
 };

@@ -15,7 +15,7 @@ public:
     World(QColor background);
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject obj);
-    hit_info TraceRay(VRay ray);
+    HitInfo TraceRay(VRay ray);
 
 
 private:

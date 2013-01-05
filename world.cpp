@@ -12,8 +12,8 @@ void World::add(GeometricObject obj){
     objects.push_back(obj);
 }
 
-hit_info World::TraceRay(VRay ray){
-    hit_info result;
+HitInfo World::TraceRay(VRay ray){
+    HitInfo result;
     double minimaldistance = HUGE;//najblizsze trafienie
     //nieskonczoność
     double hit_distance = 0;//odleglosc trafienia
