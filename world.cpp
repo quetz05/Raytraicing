@@ -8,7 +8,7 @@ World::World(QColor background){
 }
 
 /**definicja metody add klasy World*/
-void World::add(GeometricObject obj){
+void World::add(GeometricObject *obj){
     objects.push_back(obj);
 }
 
@@ -28,11 +28,11 @@ HitInfo World::TraceRay(VRay ray){
     double hit_distance = 0;
 
     for(int i =0 ;i < this->objects.size(); ++i){
-        if((objects[i]).HitTest(ray,hit_distance)&& hit_distance<minimaldistance){
+        if(objects[i]->HitTest(ray,hit_distance)&& hit_distance<minimaldistance){
             //jesli najblizsze trafienie to przypisujemy odleglosc
             minimaldistance=hit_distance;
             result.hit_object=true;
-            result.color=(objects[i]).getColor();
+            result.color=objects[i]->getColor();
         }
     }
     return result;
