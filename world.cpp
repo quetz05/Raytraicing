@@ -3,7 +3,7 @@
 
 /**definicja konstruktora klasy World*/
 World::World(QColor background){
-    background_color=background;
+    this->background_color=background;
 
 }
 
@@ -11,12 +11,6 @@ World::World(QColor background){
 void World::add(GeometricObject *obj){
     objects.push_back(obj);
 }
-
-/**definicja metody add klasy World*/
-void World::add_light(PointLight light){
-    lights.push_back(light);
-}
-
 
 /**definicja metody zwracającaej kolor tła*/
 QColor World::get_bg_color(){

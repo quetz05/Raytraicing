@@ -15,7 +15,7 @@ class Vector3{
         /**kontruktor tworzący wektor trójwymiarowy o określonych współrzędnych*/
         Vector3(double a,double b,double c){ x=a; y=b; z=c;}
         /**kontruktor kopiujący*/
-        Vector3(Vector3 &v): x(v.x),y(v.y),z(v.z){}
+        Vector3(const Vector3 &v): x(v.x),y(v.y),z(v.z){}
 
         /**przeciążenie operatora dodawania dwóch wektorów trójwymiarowych*/
         Vector3 operator +(const Vector3 &vector){return Vector3(this->x + vector.x, this->y + vector.y, this->z + vector.z );}

@@ -17,12 +17,12 @@ public:
     World(QColor background);
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject *obj);
-    /**funkcja dodająca do "świata" punkty światła*/
-    void add_light(PointLight light);
     /**funkcja odpowiedzialna za śledzenie promienia*/
     HitInfo TraceRay(VRay ray);
     /**funkcja zwracająca kolor tła*/
-    QColor get_bg_color();
+    QColor get_bg_color();  
+    /**funkcja dodająca do "świata" punkty światła*/
+    void add_light(PointLight light);
 
 
 private:

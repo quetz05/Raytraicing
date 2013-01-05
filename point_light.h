@@ -10,7 +10,7 @@ class PointLight{
         /**konstruktor tworzący światło punktowe o danym kolorze w danym miejscu*/
         PointLight(Vector3 n_position,QColor n_color){color=n_color; position=n_position;}
         /**konstruktor kopiujący*/
-        PointLight(PointLight &l): color(l.color),position(l.position){}
+        PointLight(const PointLight &light): color(light.color),position(light.position){}
         /**metoda zwracająca pozycję punktu światła*/
         Vector3 get_position(){return position;}
         /**metoda zwracająca kolor światła*/
