@@ -3,7 +3,6 @@
 #define GEO_OBJECTS
 
 #include "ray.h"
-//#include "vector.h"
 #include <QColor>
 
 

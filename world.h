@@ -17,6 +17,8 @@ public:
     void add(GeometricObject obj);
     /**funkcja odpowiedzialna za śledzenie promienia*/
     HitInfo TraceRay(VRay ray);
+    /**funkcja zwracająca kolor tła*/
+    QColor get_bg_color();
 
 
 private:

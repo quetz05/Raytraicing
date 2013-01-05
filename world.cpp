@@ -12,6 +12,12 @@ void World::add(GeometricObject obj){
     objects.push_back(obj);
 }
 
+/**definicja metody zwracającaej kolor tła*/
+QColor World::get_bg_color(){
+   return background_color;
+}
+
+
 /**definicja metody TraceRay klasy World*/
 HitInfo World::TraceRay(VRay ray){
 

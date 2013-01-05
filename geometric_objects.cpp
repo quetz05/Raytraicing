@@ -10,10 +10,11 @@ QColor GeometricObject::getColor(){
 void GeometricObject::setColor(QColor newColor){
     color = newColor;
 }
-/** definicja wirtualnej funkcji poniewaz czysto wirtualna nie da nam zrobić listy takich obiektów*/
+/**definicja wirtualnej funkcji poniewaz czysto wirtualna nie da nam zrobić listy takich obiektów*/
 bool const GeometricObject::HitTest(VRay ray, double &distance){
 	return false;
 }
+
 /**definicja konstruktora klasy Sphere (Kuli)*/
 Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
     center = newCenter;
