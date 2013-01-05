@@ -26,7 +26,7 @@ class GeometricObject {
 };
 
 /**klasa pochodna figury opisująca sferę (kulę)*/
-class Sphere: GeometricObject {
+class Sphere: public GeometricObject {
 
     public:
 
