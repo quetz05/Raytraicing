@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
-    w.show_pixmap(image);
+    w.show_image(image);
     w.show();
     
     return a.exec();

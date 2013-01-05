@@ -14,7 +14,7 @@ MainWindow::~MainWindow(){
 
 }
 
-void MainWindow::show_pixmap(QImage& image){
+void MainWindow::show_image(QImage& image){
 
     QWidget* widget = centralWidget();
     QLayout* layout = new QHBoxLayout();
