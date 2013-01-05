@@ -5,8 +5,11 @@
 #include "raytracer.h"
 #include "camera.h"
 
+
 int main(int argc, char *argv[])
 {
+
+
     // stworzenie świata, kolor tła - biały
     World world(QColor(255,255,255));
 
@@ -23,13 +26,13 @@ int main(int argc, char *argv[])
     QImage image = tracer.RayTrace(world, camera, QSize(256, 256));
 
 
-    QPixmap pixmap = QPixmap::fromImage(image);
+    //QPixmap pixmap = QPixmap::fromImage(image);
 
 
 
     QApplication a(argc, argv);
     MainWindow w;
-    w.show_pixmap(pixmap);
+    //w.show_pixmap(pixmap);
     w.show();
     
     return a.exec();
