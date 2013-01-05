@@ -27,6 +27,7 @@ HEADERS  += mainwindow.h \
     vector.h \
     world.h \
     geometric_objects.h \
-    raytracer.h
+    raytracer.h \
+    point_light.h
 
 FORMS    += mainwindow.ui
