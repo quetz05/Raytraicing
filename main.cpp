@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     //world.add(Sphere(Vector3(0, 0, 2.5), 2, QColor(0,0,0)));
 
     Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-    Raytracer tracer();
+    Raytracer  tracer();
     // Raytracing!
    // QImage image = tracer.RayTrace(world, camera, QSize(256, 256));
 
