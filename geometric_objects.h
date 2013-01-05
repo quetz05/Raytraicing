@@ -12,7 +12,7 @@ class GeometricObject {
     public:
 
         /**funkcja sprawdzająca czy promień trafił w figurę*/
-        virtual bool const HitTest(VRay ray, double &distance);
+        virtual bool const hit_test(VRay ray, double &distance);
         /**funkcja zwracająca kolor figury*/
         QColor getColor();
         /**funkcja ustawiająca kolor figury*/
@@ -33,7 +33,7 @@ class Sphere: public GeometricObject {
         /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i kolorze*/
         Sphere(Vector3 newCenter, double newRadius, QColor newColor);
         /**funkcja sprawdzająca czy promień trafił w seferę*/
-        bool const HitTest(VRay ray, double &minDistance);
+        bool const hit_test(VRay ray, double &distance);
 
     private:
 
@@ -41,6 +41,26 @@ class Sphere: public GeometricObject {
     Vector3 center;
     /**zmienna określająca promień kuli*/
     double radius;
+
+};
+
+/**klasa pochodna figury opisująca płaszczyznę*/
+class Plane: public GeometricObject {
+
+    public:
+    /**konstruktor płaszczyzny*/
+    Plane(Vector3 n_point, Vector3 n_normal, QColor n_color);
+    /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
+    bool const hit_test(VRay ray, double &min_distance);
+
+
+
+    private:
+    /**punkt, przez który przechodzi płaszczyzna*/
+    Vector3 point;
+    /**normalna do płaszczyzny*/
+    Vector3 normal;
+
 
 };
 

@@ -29,7 +29,7 @@ HitInfo World::TraceRay(VRay ray){
     double hit_distance = 0;
 
     for(int i =0 ;i < this->objects.size(); ++i){
-        if(objects[i]->HitTest(ray,hit_distance)&& hit_distance<minimaldistance){
+        if(objects[i]->hit_test(ray,hit_distance)&& hit_distance<minimaldistance){
             //jesli najblizsze trafienie to przypisujemy odleglosc
             minimaldistance=hit_distance;
             result.hit_object=true;
