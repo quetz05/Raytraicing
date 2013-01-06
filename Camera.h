@@ -27,7 +27,7 @@ private:
 /**
 	kamera perspektywiczna dzialajaca na zasadzie kamery otworkowej 
 */
-class PinholeCamera :Vcamera{
+class PinholeCamera :public Vcamera{
 public:
 	///domyslny konstruktor klasy 
 	PinholeCamera(Vector3 originl,Vector3 look,Vector3 upl,double distancel);

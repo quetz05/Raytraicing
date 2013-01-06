@@ -14,14 +14,14 @@ int main(int argc, char *argv[])
     World world(QColor(185,211,238));
 
     //dodanie kul
-     world.add(new Sphere(Vector3(-2.5, 0, 0), 2, QColor(255,0,0)));
-     world.add(new Sphere(Vector3(2.5, 0, 0), 2, QColor(0,255,0)));
-     world.add(new Sphere(Vector3(0, 0, 2.5), 2, QColor(0,0,255)));
+     world.add(new Sphere(Vector3(-4, 0, 0), 2, QColor(255,0,0)));
+     world.add(new Sphere(Vector3(4, 0, 0), 2, QColor(0,255,0)));
+     world.add(new Sphere(Vector3(0, 0, 3), 2, QColor(0,0,255)));
 
      world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),QColor(255,255,255)));
 
-    Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-
+    //Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
+     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),1);
     Raytracer tracer;
 
     // Raytracing!
