@@ -27,3 +27,27 @@ Orthogonal::Orthogonal(Vector3 eye, double angle1, Vector2 size) {
     camera_size = size;
     angle = angle1;
 }
+/************************************************************************************************
+ *									Pinhole Camera												*			
+ ************************************************************************************************/
+	
+///domyślny konstruktor klasy 
+PinholeCamera::PinholeCamera(Vector3 originl,Vector3 look,Vector3 upl,double distancel):onb(originl,look,upl){
+    this->origin=originl;
+	this->lookAt=look;
+	this->up=upl;
+	this->distance=distancel;
+}
+
+
+VRay PinholeCamera::GetRayTo(Vector2 relativeLocation){
+	return VRay(this->origin,this->RayDirection(relativeLocation));
+}
+	
+
+	/// funkcja zwracająca kierunek promienia ze względu na przesunięcie na płaszczyźnie widoku
+Vector3 PinholeCamera::RayDirection(Vector2 relativeDirection){
+    return onb*Vector3(relativeDirection.x,relativeDirection.y,-distance);
+
+}
+
