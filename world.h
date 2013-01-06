@@ -1,12 +1,12 @@
+#ifndef WORLD_H
+#define WORLD_H
+
 #include<QList>
 #include"geometric_objects.h"
 #include"hit_info.h"
 #include"ray.h"
 #include"point_light.h"
 
-
-#ifndef WORLD_H
-#define WORLD_H
 
 /**klasa odpowiedzialna za tworzenie świata przedstawianego, który widzi użytkownik*/
 class World

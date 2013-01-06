@@ -21,5 +21,5 @@
 
     //radiancja jako iloczyn 3 składowych: koloru światła, koloru materiału i współczynnika rozproszenia
     return light.get_color() * color * diffuse_factor;
-}
-*/
+}*/
+

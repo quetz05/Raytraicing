@@ -19,7 +19,8 @@ SOURCES += main.cpp\
 geometric_objects.cpp \
     raytracer.cpp \
     vector.cpp \
-    materials.cpp
+    materials.cpp \
+math/orthonormal_basis.cpp
 
 HEADERS  += mainwindow.h \
     camera.h \
@@ -30,6 +31,6 @@ HEADERS  += mainwindow.h \
     geometric_objects.h \
     raytracer.h \
     point_light.h \
-    materials.h
-
+    materials.h \
+math/orthonormal_basis.h
 FORMS    += mainwindow.ui

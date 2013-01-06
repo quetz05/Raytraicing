@@ -1,8 +1,10 @@
+#ifndef RAY
+#define RAY
+
 #include <limits>
 #include "vector.h"
 
-#ifndef RAY
-#define RAY
+
 #define EPSILON 0.00001
 #define HUGE std::numeric_limits<double>::max();
 class VRay{
