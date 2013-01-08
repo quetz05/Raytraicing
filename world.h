@@ -25,6 +25,8 @@ public:
     QColor get_bg_color();  
     /**funkcja dodająca do "świata" punkty światła*/
     void add_light(PointLight light);
+    /**funkcja szukająca obiektu pomiędzy dwoma punktami - wykorzystywana przy cioniowaniu*/
+    bool obstacles(Vector3 a, Vector3 b);
 
 
 private:

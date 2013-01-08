@@ -1,6 +1,7 @@
 #include "raytracer.h"
 
 
+
 /**definicja metody RayTrace*/
 QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
 
@@ -31,4 +32,24 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
        return image;
 }
 
+/**definicja funkcji shaderay*/
+/*QColor Raytracer::shaderay(World world, VRay ray)
+{
+        HitInfo info = world.TraceRay(ray);
+
+        if (info.hit_object2 == null)
+            return world.background_color;
+
+        QColor final_color(0,0,0);
+        Material material = info.HitObject.Material;
+            for(int i=0; i<world.lights.size();i++)
+            {
+                if (world.obstacle(info.hit_point, world.lights[i].position))
+                    continue;
+
+                final_color += material.radiance(world.lights[i], info);
+            }
+
+        return final_color;
+}*/
 
