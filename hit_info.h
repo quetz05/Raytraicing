@@ -9,14 +9,18 @@ class HitInfo{
 
     public:
 
-        //GeometricObject hit_object;
-        //World world(QColor(255,255,255));
+
+        GeometricObject hit_object2;
+
         Vector3 normal;
         Vector3 hit_point;
-        //VRay ray;
+        VRay ray;
+
+        //World world;
 
     bool hit_object;
     QColor color;
 };
+
 
 #endif // HIT_INFO_H

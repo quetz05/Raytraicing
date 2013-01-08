@@ -14,6 +14,11 @@ public:
         this->direction = direction;
     }
 
+    inline VRay(){
+        origin = Vector3();
+        direction = Vector3();
+    }
+
     Vector3 origin;
     Vector3 direction;
 };

@@ -15,6 +15,8 @@ public:
 
     /**konstruktor klasy World tworzący świat o danym kolorze tła*/
     World(QColor background);
+    /**konstruktor klasy World bezargumentowy*/
+    World();
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject *obj);
     /**funkcja odpowiedzialna za śledzenie promienia*/

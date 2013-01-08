@@ -1,5 +1,4 @@
 #include "world.h"
-#include"hit_info.h"
 
 /**definicja konstruktora klasy World*/
 World::World(QColor background){

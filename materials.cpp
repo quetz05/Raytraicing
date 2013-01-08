@@ -1,10 +1,10 @@
-//#include "materials.h"
+#include "materials.h"
 
 
 /**konstruktor materiału idealnie rozpraszającego*/
-/*PerfectDiffuse::PerfectDiffuse(QColor n_color){
+PerfectDiffuse::PerfectDiffuse(QColor n_color){
     color = n_color;
-}*/
+}
 
 /**przeciążona metoda tworząca blask materiału*/
 /*QColor PerfectDiffuse::radiance(PointLight light, HitInfo hit){
