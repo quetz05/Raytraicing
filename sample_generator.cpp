@@ -11,7 +11,7 @@ void RandomGenerator::sample(Vector2 *tab,int cout){
 }
 
 void RegularGenerator::sample(Vector2 *tab,int cout){
-    int row= (int)sqrt(cout);
+    int row= (int)sqrt((long double)cout);
     for(int x=0;x<row;++x){
         for(int y=0;y<row;++y){
             double lx = (x+0.5)/ row;
@@ -21,7 +21,7 @@ void RegularGenerator::sample(Vector2 *tab,int cout){
     }
 }
 void JitteredGenerator::sample(Vector2 *tab,int cout){
-    int row= (int)sqrt(cout);
+    int row= (int)sqrt((long double)cout);
     for(int x=0;x<row;++x){
         for(int y=0;y<row;++y){
             double lx = (x+(double)rand()/(double)RAND_MAX)/ row;

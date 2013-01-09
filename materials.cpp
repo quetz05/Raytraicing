@@ -1,9 +1,10 @@
 #include "materials.h"
 #include<QColor>
+#include "hit_info.h"
 
 
 /**przeciążona metoda tworząca blask materiału*/
-QColor PerfectDiffuse::radiance(PointLight light, HitInfo hit){
+QColor PerfectDiffuse::radiance(PointLight light, const HitInfo &hit){
 
     //wektor kierunkowy
     Vector3 in_direction = (light.get_position() - hit.hit_point).normalized();

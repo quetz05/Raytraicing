@@ -1,5 +1,7 @@
 #include "world.h"
 
+
+
 /**definicja konstruktora klasy World*/
 World::World(QColor background){
     this->background_color=background;
