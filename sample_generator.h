@@ -5,7 +5,7 @@
 class VSampleGenerator{
 public:
     VSampleGenerator();
-    virtual void sample(Vector2 *tab,int cout);
+    virtual void sample(Vector2 *tab,int cout)=0;
 };
 
 /****************************************************************************
