@@ -6,6 +6,11 @@ QColor GeometricObject::getColor(){
     return color;
 }
 
+Material *GeometricObject::get_material(){
+    return material;
+}
+
+
 /**definicja funkcji setColor obiektu*/
 void GeometricObject::setColor(QColor newColor){
     color = newColor;
@@ -16,10 +21,10 @@ bool  GeometricObject::hit_test(VRay ray, double &distance, Vector3 &normal){
 }
 
 /**definicja konstruktora klasy Sphere (Kuli)*/
-Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
+Sphere::Sphere(Vector3 newCenter, double newRadius, Material * n_material){
     center = newCenter;
     radius = newRadius;
-    color = newColor;
+    material = n_material;
 }
 
 /**definicja funkcji HitTest*/
@@ -66,11 +71,11 @@ bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
 }
 
 /**deklaracja konstruktora płaszczyzny*/
-Plane::Plane(Vector3 n_point, Vector3 n_normal, QColor n_color){
+Plane::Plane(Vector3 n_point, Vector3 n_normal, Material * n_material){
 
     point = n_point;
     normal = n_normal;
-    color = n_color;
+    material = n_material;
 }
 
 /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/

@@ -27,6 +27,9 @@ public:
     void add_light(PointLight light);
     /**funkcja szukająca obiektu pomiędzy dwoma punktami - wykorzystywana przy cioniowaniu*/
     bool obstacles(Vector3 a, Vector3 b);
+    /**funkcja zwracająca listę świateł*/
+    QList<PointLight> get_lights();
+
 
 
 private:

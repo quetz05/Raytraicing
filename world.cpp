@@ -1,4 +1,5 @@
 #include "world.h"
+#include "materials.h"
 
 
 
@@ -38,23 +39,34 @@ HitInfo World::TraceRay(VRay ray){
     double hit_distance = 0;
 
     for(int i =0 ;i < this->objects.size(); ++i){
-        if(objects[i]->hit_test(ray,hit_distance, normal)&& hit_distance<minimal_distance){
+        if(objects[i]->hit_test(ray, hit_distance, normal)&& hit_distance<minimal_distance){
             //jesli najblizsze trafienie to przypisujemy odleglosc
             minimal_distance=hit_distance;
-            result.hit_object2=objects[i];
-            result.color=objects[i]->getColor();
+            result.hit_object=objects[i];
+            result.normal=normal;
         }
     }
 
      // jeśli promień trafił na cokolwiek
-    if (result.hit_object2 != NULL)
+    if (result.hit_object != NULL)
     {
             result.hit_point = ray.origin + ray.direction * minimal_distance;
             result.ray = ray;
             result.world = this;
     }
+
     return result;
 }
+
+/**definicja funkcji get_lights*/
+QList<PointLight> World::get_lights(){
+    return lights;
+}
+
+
+
+
+
 
 /**definicja metody obstacles*/
 /*bool World::obstacles(Vector3 a, Vector3 b){

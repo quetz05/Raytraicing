@@ -10,13 +10,12 @@ class World;
 class HitInfo{
 public:
 
-    GeometricObject *hit_object2;
+    GeometricObject *hit_object;
     Vector3 normal;
     Vector3 hit_point;
     VRay ray;
     World *world;
-    bool hit_object;
-    QColor color;
+
 };
 
 
