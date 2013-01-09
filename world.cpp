@@ -22,7 +22,7 @@ HitInfo World::TraceRay(VRay ray){
 
     HitInfo result;
     result.hit_object=false;
-    double minimaldistance = HUGE;//najblizsze trafienie
+    double minimaldistance = HUGER;//najblizsze trafienie
     //nieskonczoność
     //ostatnia odległość trafienia
     double hit_distance = 0;

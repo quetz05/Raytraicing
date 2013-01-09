@@ -1,6 +1,6 @@
 #ifndef SAMPLE_DISTRYBUTOR_H
 #define SAMPLE_DISTRYBUTOR_H
-
+#include"vector.h"
 class VSampleDistributor
 {
 public:
@@ -10,6 +10,6 @@ public:
 
 class SquareDistributor : public VSampleDistributor{
     virtual Vector2 MapSample(Vector2 v){return v;}
-}
+};
 
 #endif // SAMPLE_DISTRYBUTOR_H
