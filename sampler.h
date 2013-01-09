@@ -5,7 +5,7 @@
 #include"sample_distrybutor.h"
 class Sampler{
 public:
-    Sampler(VSampleGenerator sampler,VSampleDistributor mapper,
+    Sampler(VSampleGenerator& sampler,VSampleDistributor& mapper,
             int sampleCt,int setCt);
     Vector2 Single();
 private:

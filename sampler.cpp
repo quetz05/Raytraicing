@@ -1,6 +1,6 @@
 #include "sampler.h"
 
-Sampler::Sampler(VSampleGenerator sampler, VSampleDistributor mapper, int sampleCt, int setCt){
+Sampler::Sampler(VSampleGenerator &sampler, VSampleDistributor &mapper, int sampleCt, int setCt){
     seed=0;
     this->sampleCout=sampleCt;
     for(int i=0;i<setCt;++i){

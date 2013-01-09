@@ -1,12 +1,5 @@
 #include "sample_generator.h"
 #include"math.h"
-VSampleGenerator::VSampleGenerator(){
-
-}
-
-void VSampleGenerator::sample(Vector2 *tab, int cout){
-}
-
 
 
 
