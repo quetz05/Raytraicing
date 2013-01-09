@@ -10,7 +10,7 @@ class Material{
 public:
     Material(){}
     /**metoda tworząca blask materiału*/
-    virtual QColor radiance(PointLight, HitInfo);
+    virtual QColor radiance(PointLight, HitInfo){}
 
 };
 

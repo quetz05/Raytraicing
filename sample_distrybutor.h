@@ -4,8 +4,9 @@
 class VSampleDistributor
 {
 public:
-    VSampleDistributor(){}
-    virtual Vector2 MapSample(Vector2 sample){return Vector2(0,0);}
+    VSampleDistributor();
+    virtual Vector2 MapSample(Vector2 sample){}
+
 };
 
 class SquareDistributor : public VSampleDistributor{
