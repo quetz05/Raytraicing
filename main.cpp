@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
      world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),QColor(84,84,84)));
 
     //Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(4,3),1);
+     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
     Raytracer tracer;
 
     // Raytracing!

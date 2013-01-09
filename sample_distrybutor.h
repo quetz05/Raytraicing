@@ -5,7 +5,7 @@ class VSampleDistributor
 {
 public:
     VSampleDistributor();
-    virtual Vector2 MapSample(Vector2 sample){}
+    virtual Vector2 MapSample(Vector2 sample)=0;
 
 };
 
