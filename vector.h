@@ -77,7 +77,8 @@ struct Vector2{
 	double x;
     /**współrzędna y wektora dwuwymiarowego*/
 	double y;
-
+    Vector2 operator*(double val){return Vector2(x*val,y*val);}
+    Vector2 operator/(double val){return Vector2(x/val,y/val);}
     /**kontruktor tworzący wektor dwuwymiarowy o określonych współrzędnych*/
     inline Vector2(double a, double b){x=a;y=b;}
     /**kontruktor bezargumentowy (tworzy wektor [0,0])*/

@@ -5,6 +5,7 @@
 #include"ray.h"
 #include"vector.h"
 #include"math/orthonormal_basis.h"
+#include"sampler.h"
 /** ogolny interface kamery */
 class Vcamera {
 public:
@@ -48,6 +49,33 @@ private:
 	double distance;
     /// skala obrazka pomaga utrzymac wszystko w proporcjach gdy zmieniamy proporcje obrazu
     Vector2 scale;
+};
+/****************************************************************************
+ *                          Lens Camera                                     *
+ ****************************************************************************/
+class LensCamera :public Vcamera{
+public:
+    LensCamera(Vector3 originl,
+    Vector3 lookAtl,
+    Vector3 upl,
+    Vector2 scalel,
+    double distancel,
+    Sampler distributorl,
+    double lensRadiusl,
+               double focall):origin(originl),scale(scalel),distance(distancel),distributor(distributorl),lensRadius(lensRadiusl),focal(focall),onb(originl,lookAtl,upl){
+    }
+    VRay GetRayTo(Vector2 relativeLocation);
+    Vector3 RayDirection(Vector2 pixelPos, Vector2 lensPos);
+private:
+    OrthonormalBasis onb;
+    Vector3 origin;
+    Vector2 scale;
+    double distance;
+    Sampler distributor;
+    double lensRadius;
+    double focal;
+
+
 };
 #endif
 

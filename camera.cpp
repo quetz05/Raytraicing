@@ -54,3 +54,16 @@ Vector3 PinholeCamera::RayDirection(Vector2 relativeDirection){
 
 }
 
+
+VRay LensCamera::GetRayTo(Vector2 relativeLocation){
+    Vector2 pixelPosition =Vector2(relativeLocation.x*scale.x,relativeLocation.y*scale.y);
+    Vector2 l=distributor.Single();
+    Vector2 lensPoint= Vector2(l.x*lensRadius,l.y*lensRadius);
+    Vector3 rayOrigin= origin+(onb*Vector3(lensPoint.x,lensPoint.y,0));
+    return VRay(rayOrigin,RayDirection(pixelPosition,lensPoint));
+}
+
+Vector3 LensCamera::RayDirection(Vector2 pixelPos,Vector2 lensPos){
+    Vector2 p=pixelPos*focal/distance;
+    return onb*Vector3(p.x-lensPos.x,p.y-lensPos.y,-focal);
+}
