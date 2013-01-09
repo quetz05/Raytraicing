@@ -30,7 +30,7 @@ private:
 class PinholeCamera :public Vcamera{
 public:
 	///domyslny konstruktor klasy 
-	PinholeCamera(Vector3 originl,Vector3 look,Vector3 upl,double distancel);
+    PinholeCamera(Vector3 originl,Vector3 look,Vector3 upl,Vector2 scalel,double distancel);
 	///zwraca promien do sledzenia dla klasy slezdzacej 
 	VRay GetRayTo(Vector2 relativeLocation);
 	
@@ -46,6 +46,8 @@ private:
 	Vector3 up;
 	/// odleglosc punktu origin od view plane(plaszczyzny w ktorej znajduje sie nasz obraz)
 	double distance;
+    /// skala obrazka pomaga utrzymac wszystko w proporcjach gdy zmieniamy proporcje obrazu
+    Vector2 scale;
 };
 #endif
 

@@ -32,16 +32,18 @@ Orthogonal::Orthogonal(Vector3 eye, double angle1, Vector2 size) {
  ************************************************************************************************/
 	
 ///domyślny konstruktor klasy 
-PinholeCamera::PinholeCamera(Vector3 originl,Vector3 look,Vector3 upl,double distancel):onb(originl,look,upl){
+PinholeCamera::PinholeCamera(Vector3 originl, Vector3 look, Vector3 upl, Vector2 scalel, double distancel):onb(originl,look,upl){
     this->origin=originl;
 	this->lookAt=look;
 	this->up=upl;
 	this->distance=distancel;
+    this->scale=scalel;
 }
 
 
 VRay PinholeCamera::GetRayTo(Vector2 relativeLocation){
-    Vector3 v=this->RayDirection(relativeLocation);
+    Vector2 vs=Vector2(relativeLocation.x*scale.x,relativeLocation.y*scale.y);
+    Vector3 v=this->RayDirection(vs);
     return VRay(origin,v);
 }
 	
