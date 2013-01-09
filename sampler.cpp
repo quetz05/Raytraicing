@@ -10,6 +10,15 @@ Sampler::Sampler(VSampleGenerator sampler, VSampleDistributor mapper, int sample
             samples[j]=mapper.MapSample(samples[j]);
         }
         sets.push_back(samples);
-
     }
+}
+
+Vector2 Sampler::Single(){
+    Vector2 sample = (sets[setNdx])[sampleNdx];
+    sampleNdx++;
+    if(sampleNdx>=sampleCout){
+        sampleNdx=0;
+        setNdx= rand()/RAND_MAX;
+    }
+    return sample;
 }
