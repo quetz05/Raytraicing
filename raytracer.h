@@ -17,13 +17,6 @@ class Raytracer {
     QColor shaderay(World world, VRay ray);
 
 
-
-
-
-
-
-
-
 };
 
 #endif // RAYTRACER_H

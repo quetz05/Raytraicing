@@ -11,6 +11,12 @@ void World::add(GeometricObject *obj){
     objects.push_back(obj);
 }
 
+/**definicja metody add_light klasy World*/
+void World::add_light(PointLight light){
+    lights.push_back(light);
+}
+
+
 /**definicja metody zwracającaej kolor tła*/
 QColor World::get_bg_color(){
    return background_color;
@@ -20,7 +26,9 @@ QColor World::get_bg_color(){
 /**definicja metody TraceRay klasy World*/
 HitInfo World::TraceRay(VRay ray){
 
+    //rezultat śledzenie promienia
     HitInfo result;
+    Vector3 normal;
     result.hit_object=false;
     double minimaldistance = HUGER;//najblizsze trafienie
     //nieskonczoność
@@ -53,7 +61,7 @@ HitInfo World::TraceRay(VRay ray){
 
     //sprawdzanie czy dany obiekt jest w cieniu (jeśli tak zwróć true, jeśli nie - false)
     for(int i=0; i<objects.size();i++)
-       if(objects[i].hit_test(ray, &distance, &ignored) && distance < distance_ab)
+       if(objects[i]->hit_test(ray, &distance, &ignored) && distance < distance_ab)
           return true;
 
     return false;

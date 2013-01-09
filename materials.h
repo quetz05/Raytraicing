@@ -20,7 +20,7 @@ class PerfectDiffuse: public Material{
     public:
 
         /**konstruktor tworzący materiał danego koloru*/
-    PerfectDiffuse(QColor c): color(c){}
+        PerfectDiffuse(QColor c): color(c){}
         /**przeciążona metoda tworząca blask materiału*/
         QColor radiance(PointLight, HitInfo);
 

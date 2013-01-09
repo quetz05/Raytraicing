@@ -10,7 +10,7 @@ public:
     Vector3 normal;
     Vector3 hit_point;
     VRay ray;
-    //World world;
+   // World world;
     bool hit_object;
     QColor color;
 };
