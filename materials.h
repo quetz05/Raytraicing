@@ -11,7 +11,7 @@ class Material{
 public:
     Material(){}
     /**metoda tworząca blask materiału*/
-    virtual QColor radiance(PointLight,const HitInfo&){}
+    virtual QColor radiance(PointLight, const HitInfo&){}
 
 };
 
@@ -23,7 +23,7 @@ class PerfectDiffuse: public Material{
         /**konstruktor tworzący materiał danego koloru*/
         PerfectDiffuse(QColor c): color(c){}
         /**przeciążona metoda tworząca blask materiału*/
-        QColor radiance(PointLight,const HitInfo&);
+        QColor radiance(PointLight, const HitInfo&);
 
 
 

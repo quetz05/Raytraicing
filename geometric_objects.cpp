@@ -11,7 +11,7 @@ void GeometricObject::setColor(QColor newColor){
     color = newColor;
 }
 /**definicja wirtualnej funkcji poniewaz czysto wirtualna nie da nam zrobić listy takich obiektów*/
-bool  GeometricObject::hit_test(VRay ray, double &distance){
+bool  GeometricObject::hit_test(VRay ray, double &distance, Vector3 &normal){
 	return false;
 }
 
@@ -23,7 +23,7 @@ Sphere::Sphere(Vector3 newCenter, double newRadius, QColor newColor){
 }
 
 /**definicja funkcji HitTest*/
-bool  Sphere::hit_test(VRay ray, double &min_distance){
+bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
 
     //rozwiązanie równania kwadratowego
     double t;
@@ -57,6 +57,8 @@ bool  Sphere::hit_test(VRay ray, double &min_distance){
     if (t < EPSILON)
         return false;
 
+    Vector3 hit_point = (ray.origin + ray.direction * t);
+    normal = (hit_point - center).normalized();
     //przypisanie wartości rozwiązania do minimalnej odległości
     min_distance = t;
 
@@ -72,13 +74,14 @@ Plane::Plane(Vector3 n_point, Vector3 n_normal, QColor n_color){
 }
 
 /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
-bool Plane::hit_test(VRay ray, double &distance){
+bool Plane::hit_test(VRay ray, double &distance, Vector3 &out_normal){
 
     //równanie wynikające z podstawienia równania prostej do równania płaszczyzny
     double x = (point - ray.origin).dot(normal)/(ray.direction.dot(normal));
 
     if(x>EPSILON){
         distance = x;
+        out_normal=normal;
         return true;
     }
 

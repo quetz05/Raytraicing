@@ -31,19 +31,27 @@ HitInfo World::TraceRay(VRay ray){
     //rezultat śledzenie promienia
     HitInfo result;
     Vector3 normal;
-    result.hit_object=false;
-    double minimaldistance = HUGER;//najblizsze trafienie
+
+    double minimal_distance = HUGER;//najblizsze trafienie
     //nieskonczoność
     //ostatnia odległość trafienia
     double hit_distance = 0;
 
     for(int i =0 ;i < this->objects.size(); ++i){
-        if(objects[i]->hit_test(ray,hit_distance)&& hit_distance<minimaldistance){
+        if(objects[i]->hit_test(ray,hit_distance, normal)&& hit_distance<minimal_distance){
             //jesli najblizsze trafienie to przypisujemy odleglosc
-            minimaldistance=hit_distance;
-            result.hit_object=true;
+            minimal_distance=hit_distance;
+            result.hit_object2=objects[i];
             result.color=objects[i]->getColor();
         }
+    }
+
+     // jeśli promień trafił na cokolwiek
+    if (result.hit_object2 != NULL)
+    {
+            result.hit_point = ray.origin + ray.direction * minimal_distance;
+            result.ray = ray;
+            result.world = this;
     }
     return result;
 }
