@@ -20,7 +20,13 @@ geometric_objects.cpp \
     raytracer.cpp \
     vector.cpp \
     materials.cpp \
+<<<<<<< HEAD
 math/orthonormal_basis.cpp
+=======
+    sample_generator.cpp \
+    sample_distrybutor.cpp \
+    sampler.cpp
+>>>>>>> sampler
 
 HEADERS  += mainwindow.h \
     camera.h \
@@ -32,5 +38,12 @@ HEADERS  += mainwindow.h \
     raytracer.h \
     point_light.h \
     materials.h \
+<<<<<<< HEAD
 math/orthonormal_basis.h
+=======
+    sample_generator.h \
+    sample_distrybutor.h \
+    sampler.h
+
+>>>>>>> sampler
 FORMS    += mainwindow.ui
