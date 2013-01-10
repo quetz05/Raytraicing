@@ -42,6 +42,7 @@ class Phong : public Material{
         /**konstruktor klasy*/
         Phong(QColor, double, double,double);
         QColor radiance(PointLight light,const HitInfo&);
+        double phong_factor(Vector3, Vector3 , Vector3);
 
          private:
              /**kolor materiału*/

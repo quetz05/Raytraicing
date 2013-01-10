@@ -44,9 +44,9 @@ class Vector3{
         /**funkcja zwracająca znormalizowany wektor trójwymiarowy*/
         Vector3 normalized(){return (*this)/(this->getLength());}
         /**funkcja odbicia, potrzebna do modelu Phonga*/
-        Vector3 reflect(Vector3 vector, Vector3 normal);
+        static Vector3 reflect(Vector3 vector, Vector3 normal);
         /**metoda tworząca wektro przeciwny*/
-        Vector3 contrary(Vector3 vector){return Vector3(-vector.getX(),-vector.getY(),-vector.getZ());}
+        static Vector3 contrary(Vector3 vector){return Vector3(-vector.getX(),-vector.getY(),-vector.getZ());}
 
 
         /**funkcja zwracająca współrzędną x wektora trójwymiarowego*/

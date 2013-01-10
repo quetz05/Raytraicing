@@ -1,6 +1,34 @@
 #include "materials.h"
 #include<QColor>
 #include "hit_info.h"
+#include <math.h>
+
+/**metoda wymnażająca dwa kolory*/
+QColor multiply_colors (QColor c1, QColor c2){
+
+    return QColor((c1.red()*c2.red())/255,(c1.green()*c2.green())/255,(c1.blue()*c2.blue())/255);
+
+}
+
+/**metoda wymnażająca kolor i liczbę*/
+QColor multiply_color (QColor c1, double multiply){
+
+    return QColor((c1.red()*multiply)/255,(c1.green()*multiply)/255,(c1.blue()*multiply)/255);
+
+}
+
+/**metoda licząca współczynnik Phonga*/
+double Phong::phong_factor(Vector3 in_direction, Vector3 normal, Vector3 to_camera_direction)
+{
+    Vector3 reflected = Vector3::reflect(in_direction, normal);
+
+    double cos_angle = reflected.dot(to_camera_direction);
+
+    if (cos_angle <= 0)
+        return 0;
+
+    return pow(cos_angle, specular_exponent);
+}
 
 
 /**przeciążona metoda tworząca blask materiału*/
@@ -33,7 +61,7 @@ Phong::Phong(QColor n_color, double n_diffuse, double n_specular,double n_specul
      specular_exponent = n_specular_e;
 }
 
-/**NIEDOKOŃĆZONA!!*/
+/**definicja metody radiance materiału Phonga*/
 QColor Phong::radiance(PointLight light,const HitInfo& hit){
 
     Vector3 in_direction = (light.get_position() - hit.hit_point).normalized();
@@ -44,15 +72,21 @@ QColor Phong::radiance(PointLight light,const HitInfo& hit){
         return QColor(0,0,0);
 
 
-    QColor result = QColor(0,0,0);//QColor( light.get_color().rgb() * color * diffuse_factor * diffuse_coeff);
 
-    /*double phong_factor;// = phong_factor(inDirection, hit.normal, -hit.Ray.Direction);
+    QRgb result = multiply_color(multiply_colors(light.get_color(), color), diffuse_factor * diffuse_coeff).rgb();
 
-    if (phong_factor != 0)
-        result += materialColor * specular * phongFactor;*/
+    double phong;
 
-    return result;
+    phong = phong_factor(in_direction, hit.normal, Vector3::contrary(hit.ray.direction));
 
+    if (phong != 0)
+        result += multiply_color(color,  specular * phong).rgb();
 
+    return QColor(result);
 
 }
+
+
+
+
+

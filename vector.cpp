@@ -20,7 +20,7 @@ bool Vector3::operator ==( Vector3 const &vector){
 }
 
 /**definicja metody reflect*/
-Vector3 reflect(Vector3 vector, Vector3 normal){
+Vector3 Vector3::reflect(Vector3 vector, Vector3 normal){
 
     double dot = normal.dot(vector);
     return normal*dot*2 - vector;
