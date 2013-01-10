@@ -20,5 +20,6 @@ QColor PerfectDiffuse::radiance(PointLight light, const HitInfo &hit){
 
     //radiancja jako iloczyn 3 składowych: koloru światła, koloru materiału i współczynnika rozproszenia
     return light.get_color().rgb() * color.rgb()* diffuse_factor;
+
 }
 

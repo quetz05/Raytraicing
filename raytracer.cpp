@@ -11,32 +11,28 @@ QColor strip_color(QColor color){
         green = green < 0 ? 0 : green > 1 ? 1 : green;
         blue = blue < 0 ? 0 : blue > 1 ? 1 :blue;
 
-        return QColor((red * 255),(green * 255),(blue * 255));
+        return QColor((red*255),(green*255),(blue*255));
 }
 
 QColor Raytracer::shaderay(World world, VRay ray){
 
+
         HitInfo info = world.TraceRay(ray);
 
 
-
-       // if (info.hit_object == NULL)
-          //  return world.get_bg_color().rgb();
+        if (info.hit_object == NULL)
+           return world.get_bg_color().rgb();
 
         QRgb final_color(0);
 
         QList<PointLight> light_list = world.get_lights();
 
-        if (light_list.empty())
-            return QColor(255,255,255);
 
-       // Material *material = info.hit_object->get_material();
-
-        PerfectDiffuse material(QColor(255,0,0));
+        Material *material = info.hit_object->get_material();
 
 
         for(int i=0; i<light_list.size();i++)
-           final_color += (material.radiance(light_list[i], info)).rgb();
+           final_color += (material->radiance(light_list[i], info)).rgb();
 
 
         return QColor(final_color);

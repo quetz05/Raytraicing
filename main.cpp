@@ -11,21 +11,21 @@ int main(int argc, char *argv[])
 
 
     // stworzenie świata
-    World world(QColor(185,211,238));
+    World world(QColor(0,200,0));
 
     //materiały
-    PerfectDiffuse red_mat(QColor(255,0,0));
-    PerfectDiffuse green_mat(QColor(0,255,0));
-    PerfectDiffuse blue_mat(QColor(0,0,255));
-    PerfectDiffuse gray_mat(QColor(84,84,84));
+    Material *red_mat = new PerfectDiffuse(QColor(255,0,0));
+    Material *green_mat = new PerfectDiffuse(QColor(0,255,0));
+    Material *blue_mat = new PerfectDiffuse(QColor(0,0,255));
+    Material *gray_mat = new PerfectDiffuse(QColor(84,84,84));
 
 
      //dodanie kul
-     world.add(new Sphere(Vector3(-4, 0, 0), 2, &red_mat));
-     world.add(new Sphere(Vector3(4, 0, 0), 2, &green_mat));
-     world.add(new Sphere(Vector3(0, 0, 3), 2, &blue_mat));
+        world.add(new Sphere(Vector3(-4, 0, 0), 2, blue_mat));
+     world.add(new Sphere(Vector3(4, 0, 0), 2, green_mat));
+     world.add(new Sphere(Vector3(0, 0, 3), 2, red_mat));
 
-     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),&gray_mat));
+    world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),red_mat));
 
      PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
 
