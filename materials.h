@@ -34,6 +34,23 @@ class PerfectDiffuse: public Material{
 
 };
 
+/**klasa reprezentująca materiał Phonga*/
+class Phong : public Material{
+
+    public:
+
+        /**konstruktor klasy*/
+        Phong(QColor, double, double,double);
+        QColor radiance(PointLight light,const HitInfo&);
+
+         private:
+             /**kolor materiału*/
+             QColor color;
+             double diffuse_coeff;
+             double specular;
+             double specular_exponent;
+};
+
 
 #endif // MATERIAL_H
 

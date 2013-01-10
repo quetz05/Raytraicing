@@ -23,5 +23,5 @@ bool Vector3::operator ==( Vector3 const &vector){
 Vector3 reflect(Vector3 vector, Vector3 normal){
 
     double dot = normal.dot(vector);
-    return 2*normal*dot - vec;
+    return normal*dot*2 - vector;
 }
