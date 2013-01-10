@@ -4,7 +4,7 @@
 #include<stdlib.h>
 class VSampleGenerator{
 public:
-    VSampleGenerator();
+    VSampleGenerator(){}
     virtual void sample(Vector2 *tab,int cout)=0;
 };
 

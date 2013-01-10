@@ -8,6 +8,7 @@ public:
     Sampler(VSampleGenerator& sampler,VSampleDistributor& mapper,
             int sampleCt,int setCt);
     Vector2 Single();
+    int getSampleCout(){return sampleCout;}
 private:
     int seed;
     QList<Vector2*> sets;

@@ -4,7 +4,7 @@
 class VSampleDistributor
 {
 public:
-    VSampleDistributor();
+    VSampleDistributor(){}
     virtual Vector2 MapSample(Vector2 sample)=0;
 
 };

@@ -60,7 +60,8 @@ VRay LensCamera::GetRayTo(Vector2 relativeLocation){
     Vector2 l=distributor.Single();
     Vector2 lensPoint= Vector2(l.x*lensRadius,l.y*lensRadius);
     Vector3 rayOrigin= origin+(onb*Vector3(lensPoint.x,lensPoint.y,0));
-    return VRay(rayOrigin,RayDirection(pixelPosition,lensPoint));
+    Vector3 rayDir=RayDirection(pixelPosition,lensPoint);
+    return VRay(rayOrigin,rayDir);
 }
 
 Vector3 LensCamera::RayDirection(Vector2 pixelPos,Vector2 lensPos){

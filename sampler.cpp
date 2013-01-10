@@ -11,9 +11,13 @@ Sampler::Sampler(VSampleGenerator &sampler, VSampleDistributor &mapper, int samp
         }
         sets.push_back(samples);
     }
+    srand(seed);
+    this->setNdx=0;
+    this->sampleNdx=0;
 }
 
 Vector2 Sampler::Single(){
+
     Vector2 sample = (sets[setNdx])[sampleNdx];
     sampleNdx++;
     if(sampleNdx>=sampleCout){

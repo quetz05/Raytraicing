@@ -1,5 +1,5 @@
 #include "raytracer.h"
-
+#include<QColor>
 QColor Raytracer::shaderay(World world, VRay ray){
 
         HitInfo info = world.TraceRay(ray);
@@ -36,20 +36,35 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
 
     //tworzenie zmiennej przechowującej mapę
     QImage image = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);
-
+    JitteredGenerator gener(0);
+    SquareDistributor dist;
+    Sampler distributor(gener,dist,32,60);
     //zapełnianie mapy
     for(int i = 0; i < image_size.width(); i++)
         for (int j = 0; j < image_size.height(); j++)
         {
-            // przeskalowanie i oraz j do zakresu od -1 do 1
+          /*  // przeskalowanie i oraz j do zakresu od -1 do 1
             Vector2 picture_coordinates((double)(((i + 0.5)/image_size.width())*2-1),
                                                       (double)(((j + 0.5)/image_size.height())*2-1));
             // sprawdzenie na co trafił promień
             VRay ray = camera.GetRayTo(picture_coordinates);
 
             image.setPixel(i, j, (shaderay(world, ray)).rgb());
-
-
+            */
+            //dodajemy sampling
+            QColor Color;
+            Vector3 final(0,0,0);
+            for(int k=0;k<distributor.getSampleCout();++k){
+                Vector2 sample=distributor.Single();
+                Vector2 pic_coords(
+                            ((i+sample.x)/(double)image_size.width())*2-1,
+                            ((j+sample.x)/(double)image_size.width())*2-1);
+                VRay rayt= camera.GetRayTo(pic_coords);
+                Color=shaderay(world,rayt);
+                final=final+Vector3(Color.red(),Color.green(),Color.blue())/(double)distributor.getSampleCout();
+            }
+            Color.setRgb((int)final.getX(),(int)final.getY(),(int)final.getZ());
+            image.setPixel(i,j,Color.rgb());
 
         }
 
