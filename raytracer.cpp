@@ -38,7 +38,7 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
     QImage image = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);
     JitteredGenerator gener(0);
     SquareDistributor dist;
-    Sampler distributor(gener,dist,32,60);
+    Sampler distributor(gener,dist,8,60);
     //zapełnianie mapy
     for(int i = 0; i < image_size.width(); i++)
         for (int j = 0; j < image_size.height(); j++)
@@ -57,8 +57,8 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
             for(int k=0;k<distributor.getSampleCout();++k){
                 Vector2 sample=distributor.Single();
                 Vector2 pic_coords(
-                            ((i+sample.x)/(double)image_size.width())*2-1,
-                            ((j+sample.x)/(double)image_size.width())*2-1);
+                            ((double)(i+sample.x)/(double)image_size.width())*2-1,
+                            ((double)(j+sample.x)/(double)image_size.height())*2-1);
                 VRay rayt= camera.GetRayTo(pic_coords);
                 Color=shaderay(world,rayt);
                 final=final+Vector3(Color.red(),Color.green(),Color.blue())/(double)distributor.getSampleCout();
