@@ -1,19 +1,5 @@
 #include "raytracer.h"
 
-/**wyłuskanie koloru*/
-QColor strip_color(QColor color){
-
-    int red = color.red();
-    int green = color.green();
-    int blue =  color.blue();
-
-        red = red < 0 ? 0 : red > 1 ? 1 : red;
-        green = green < 0 ? 0 : green > 1 ? 1 : green;
-        blue = blue < 0 ? 0 : blue > 1 ? 1 :blue;
-
-        return QColor((red*255),(green*255),(blue*255));
-}
-
 QColor Raytracer::shaderay(World world, VRay ray){
 
 
@@ -55,7 +41,7 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
             // sprawdzenie na co trafił promień
             VRay ray = camera.GetRayTo(picture_coordinates);
 
-            image.setPixel(i, j, (strip_color((shaderay(world, ray)))).rgb());
+            image.setPixel(i, j, (shaderay(world, ray)).rgb());
 
             //HitInfo info = world.TraceRay(ray);
 

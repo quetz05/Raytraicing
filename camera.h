@@ -1,4 +1,3 @@
-
 #ifndef CAMERA
 #define CAMERA
 

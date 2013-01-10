@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 
     // stworzenie świata
-    World world(QColor(0,200,0));
+    World world(QColor(220,210,220));
 
     //materiały
     Material *red_mat = new PerfectDiffuse(QColor(255,0,0));
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
      world.add(new Sphere(Vector3(4, 0, 0), 2, green_mat));
      world.add(new Sphere(Vector3(0, 0, 3), 2, red_mat));
 
-    world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),red_mat));
+    world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),gray_mat));
 
      PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
 
