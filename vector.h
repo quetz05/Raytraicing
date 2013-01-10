@@ -43,6 +43,8 @@ class Vector3{
         double getLengthSq(){return x*x+y*y+z*z;}
         /**funkcja zwracająca znormalizowany wektor trójwymiarowy*/
         Vector3 normalized(){return (*this)/(this->getLength());}
+        /**funkcja odbicia, potrzebna do modelu Phonga*/
+        Vector3 reflect(Vector3 vec, Vector3 normal);
 
 
 

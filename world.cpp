@@ -1,5 +1,6 @@
 #include "world.h"
 #include "materials.h"
+#include "ray.h"
 
 
 
@@ -63,30 +64,25 @@ QList<PointLight> World::get_lights(){
     return lights;
 }
 
-
-
-
-
-
 /**definicja metody obstacles*/
-/*bool World::obstacles(Vector3 a, Vector3 b){
+bool World::obstacles(Vector3 a, Vector3 b){
 
     //odl. od punktu cieniowanego do punktu światła
-    Vector3 vector_ab = a - b;
+    Vector3 vector_ab = b - a;
     double distance_ab = vector_ab.getLength();
-    double distance = HUGE;
+    double distance = HUGER;
 
     //promień z cieniowanego punktu do światła
-    VRay ray(a, b);
+    VRay ray(a, vector_ab);
 
     Vector3 ignored;
 
     //sprawdzanie czy dany obiekt jest w cieniu (jeśli tak zwróć true, jeśli nie - false)
     for(int i=0; i<objects.size();i++)
-       if(objects[i]->hit_test(ray, &distance, &ignored) && distance < distance_ab)
+       if(objects[i]->hit_test(ray, distance, ignored) && distance < distance_ab)
           return true;
 
     return false;
-}*/
+}
 
 

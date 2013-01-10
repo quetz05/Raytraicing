@@ -2,26 +2,32 @@
 
 QColor Raytracer::shaderay(World world, VRay ray){
 
-
         HitInfo info = world.TraceRay(ray);
 
-
         if (info.hit_object == NULL)
-           return world.get_bg_color().rgb();
+           return world.get_bg_color();
 
-        QRgb final_color(0);
+
 
         QList<PointLight> light_list = world.get_lights();
 
 
         Material *material = info.hit_object->get_material();
 
+        double r;
+        double g;
+        double b;
 
-        for(int i=0; i<light_list.size();i++)
-           final_color += (material->radiance(light_list[i], info)).rgb();
+        for(int i=0; i<light_list.size();i++){
+            if (world.obstacles(info.hit_point, light_list[i].get_position()))
+                continue;
 
+            r += material->radiance(light_list[i], info).red();
+            g += material->radiance(light_list[i], info).green();
+            b += material->radiance(light_list[i], info).blue();
+        }
 
-        return QColor(final_color);
+        return QColor(r,g,b);
 }
 
 
@@ -43,7 +49,6 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
 
             image.setPixel(i, j, (shaderay(world, ray)).rgb());
 
-            //HitInfo info = world.TraceRay(ray);
 
 
         }
