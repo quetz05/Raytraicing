@@ -32,13 +32,11 @@ QColor Raytracer::shaderay(World world, VRay ray){
 
 
 /**definicja metody RayTrace*/
-QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size){
+QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size,Sampler distributor){
 
     //tworzenie zmiennej przechowującej mapę
     QImage image = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);
-    JitteredGenerator gener(0);
-    SquareDistributor dist;
-    Sampler distributor(gener,dist,8,60);
+
     //zapełnianie mapy
     for(int i = 0; i < image_size.width(); i++)
         for (int j = 0; j < image_size.height(); j++)

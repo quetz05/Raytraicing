@@ -32,13 +32,16 @@ int main(int argc, char *argv[])
      PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
 
      world.add_light(light);
-
+     JitteredGenerator gener(0);
+     SquareDistributor dist;
+     Sampler distributor(gener,dist,64,60);
      //Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+     //PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+     LensCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1,distributor,0.5,11);
      Raytracer tracer;
 
     // Raytracing!
-    QImage image = tracer.RayTrace(world, camera, QSize(800, 600));
+    QImage image = tracer.RayTrace(world, camera, QSize(800, 600),distributor);
 
 
     QApplication a(argc, argv);

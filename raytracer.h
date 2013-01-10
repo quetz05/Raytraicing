@@ -12,7 +12,7 @@ class Raytracer {
     public:
 
     /**tworzenie obrazu wynikowego*/
-    QImage RayTrace(World world, Vcamera &camera, QSize image_size);
+    QImage RayTrace(World world, Vcamera &camera, QSize image_size, Sampler distributor);
     /**funkcja sumująca światło*/
     QColor shaderay(World world, VRay ray);
 
