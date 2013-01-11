@@ -161,7 +161,7 @@ MyColor Reflective::shade(Raytracer &tracer, HitInfo &hit){
 
     VRay reflected_ray(hit.hit_point, reflection_direction);
 
-    radiance = radiance + tracer.shaderay(*hit.world, reflected_ray/*, hit.Depth*/) * color * reflectivity;
+    radiance = radiance + tracer.shaderay(*hit.world, reflected_ray, hit.depth) * color * reflectivity;
 
     return radiance;
 

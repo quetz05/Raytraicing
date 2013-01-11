@@ -2,20 +2,22 @@
 #include<QColor>
 #include"mycolor.h"
 
-MyColor Raytracer::shaderay(World world, VRay ray){
+MyColor Raytracer::shaderay(World world, VRay ray, int current_depth){
+
+    if (current_depth > max_depth)
+        return MyColor(0,0,0);
 
         HitInfo info = world.TraceRay(ray);
+        info.depth = current_depth + 1;
 
         if (info.hit_object == NULL)
            return world.get_bg_color();
 
-
-
-        QList<PointLight> light_list = world.get_lights();
-
-
         Material *material = info.hit_object->get_material();
 
+        return material->shade(*this, info);
+
+        /*QList<PointLight> light_list = world.get_lights();
         MyColor final(0,0,0);
 
         for(int i=0; i<light_list.size();i++){
@@ -25,7 +27,7 @@ MyColor Raytracer::shaderay(World world, VRay ray){
             final = final+ material->radiance(light_list[i], info);
         }
 
-        return final;
+        return final;*/
 }
 
 
@@ -59,7 +61,7 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size, Sampl
                 VRay rayt= camera.GetRayTo(pic_coords);
 
 
-                total_color= total_color + shaderay(world,rayt)/(double)sampleCout;
+                total_color= total_color + shaderay(world,rayt,0)/(double)sampleCout;
                 //final=final+Vector3(Color.red(),Color.green(),Color.blue())
             }
             //Color.setRgb((int)final.getX(),(int)final.getY(),(int)final.getZ());
