@@ -61,7 +61,7 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size,Sample
                 Color=shaderay(world,rayt);
                 final=final+Vector3(Color.red(),Color.green(),Color.blue())/(double)distributor.getSampleCout();
             }
-            Color.setRgb((int)final.getX(),(int)final.getY(),(int)final.getZ());
+            Color.setRgb(final.getX(),final.getY(),final.getZ());
             image.setPixel(i,j,Color.rgb());
 
         }

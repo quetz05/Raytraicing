@@ -21,7 +21,9 @@ int main(int argc, char *argv[])
 
     Material *phong_green_mat = new Phong(QColor(0,255,0), 0.8, 1, 30);
 
-
+    JitteredGenerator gener(0);
+    SquareDistributor dist;
+    Sampler distributor(gener,dist,1,60);
      //dodanie kul
         world.add(new Sphere(Vector3(-4, 0, 0), 2, blue_mat));
      world.add(new Sphere(Vector3(4, 0, 0), 2, phong_green_mat));
@@ -29,15 +31,17 @@ int main(int argc, char *argv[])
 
     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),gray_mat));
 
-     PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
+     //PointLight light(Vector3(0, 4, 0), QColor(255,255,255));
+     PointLight light1(Vector3(0,4,0), QColor(255,255,255), &distributor,2);
 
-     world.add_light(light);
-     JitteredGenerator gener(0);
-     SquareDistributor dist;
-     Sampler distributor(gener,dist,64,60);
+     //world.add_light(light);
+     world.add_light(light1);
+     //world.add_light(light2);
+
+
      //Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
      //PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-     LensCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1,distributor,0.5,11);
+     LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
      Raytracer tracer;
 
     // Raytracing!

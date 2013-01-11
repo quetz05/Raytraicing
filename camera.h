@@ -59,7 +59,7 @@ public:
     Vector3 upl,
     Vector2 scalel,
     double distancel,
-    Sampler distributorl,
+    Sampler* distributorl,
     double lensRadiusl,
                double focall):origin(originl),scale(scalel),distance(distancel),distributor(distributorl),lensRadius(lensRadiusl),focal(focall),onb(originl,lookAtl,upl){
     }
@@ -70,7 +70,7 @@ private:
     Vector3 origin;
     Vector2 scale;
     double distance;
-    Sampler distributor;
+    Sampler* distributor;
     double lensRadius;
     double focal;
 

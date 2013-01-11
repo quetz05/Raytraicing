@@ -23,7 +23,8 @@ geometric_objects.cpp \
 math/orthonormal_basis.cpp \
     sample_generator.cpp \
     sample_distrybutor.cpp \
-    sampler.cpp
+    sampler.cpp \
+    point_light.cpp
 
 
 HEADERS  += mainwindow.h \
