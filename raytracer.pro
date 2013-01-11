@@ -39,6 +39,7 @@ HEADERS  += mainwindow.h \
 math/orthonormal_basis.h \
     sample_generator.h \
     sample_distrybutor.h \
-    sampler.h
+    sampler.h \
+    mycolor.h
 
 FORMS    += mainwindow.ui

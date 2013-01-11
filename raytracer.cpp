@@ -1,5 +1,7 @@
 #include "raytracer.h"
 #include<QColor>
+#include"mycolor.h"
+
 QColor Raytracer::shaderay(World world, VRay ray){
 
         HitInfo info = world.TraceRay(ray);
