@@ -13,4 +13,7 @@ class SquareDistributor : public VSampleDistributor{
     virtual Vector2 MapSample(Vector2 v);
 };
 
+class DiskDistributor : public VSampleDistributor{
+    virtual Vector2 MapSample(Vector2 sample);
+};
 #endif // SAMPLE_DISTRYBUTOR_H
