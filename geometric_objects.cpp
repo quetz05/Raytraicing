@@ -2,7 +2,7 @@
 #include "geometric_objects.h"
 
 /**definicja funkcji getColor obiektu*/
-QColor GeometricObject::getColor(){
+MyColor GeometricObject::getColor(){
     return color;
 }
 
@@ -12,7 +12,7 @@ Material *GeometricObject::get_material(){
 
 
 /**definicja funkcji setColor obiektu*/
-void GeometricObject::setColor(QColor newColor){
+void GeometricObject::setColor(MyColor newColor){
     color = newColor;
 }
 /**definicja wirtualnej funkcji poniewaz czysto wirtualna nie da nam zrobić listy takich obiektów*/

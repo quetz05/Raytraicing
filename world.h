@@ -14,7 +14,7 @@ class World
 public:
 
     /**konstruktor klasy World tworzący świat o danym kolorze tła*/
-    World(QColor background);
+    World(MyColor background);
     /**konstruktor klasy World bezargumentowy*/
     World();
     /**funkcja dodająca do "świata" obiekty geometryczne*/
@@ -22,7 +22,7 @@ public:
     /**funkcja odpowiedzialna za śledzenie promienia*/
     HitInfo TraceRay(VRay ray);
     /**funkcja zwracająca kolor tła*/
-    QColor get_bg_color();  
+    MyColor get_bg_color();  
     /**funkcja dodająca do "świata" punkty światła*/
     void add_light(PointLight light);
     /**funkcja szukająca obiektu pomiędzy dwoma punktami - wykorzystywana przy cioniowaniu*/
@@ -39,7 +39,7 @@ private:
     /**lista obiektów geometrycznych znajdujących się w danym świecie*/
     QList<GeometricObject*> objects;
     /**kolor tła "świata"*/
-    QColor background_color;
+    MyColor background_color;
 };
 
 #endif // WORLD_H

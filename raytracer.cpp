@@ -2,7 +2,7 @@
 #include<QColor>
 #include"mycolor.h"
 
-QColor Raytracer::shaderay(World world, VRay ray){
+MyColor Raytracer::shaderay(World world, VRay ray){
 
         HitInfo info = world.TraceRay(ray);
 
@@ -16,19 +16,16 @@ QColor Raytracer::shaderay(World world, VRay ray){
 
         Material *material = info.hit_object->get_material();
 
-        double r,g,b;
-
+        MyColor final(0,0,0);
 
         for(int i=0; i<light_list.size();i++){
             if (world.obstacles(info.hit_point, light_list[i].get_position()))
                 continue;
 
-            r += material->radiance(light_list[i], info).red();
-            g += material->radiance(light_list[i], info).green();
-            b += material->radiance(light_list[i], info).blue();
+            final = final+ material->radiance(light_list[i], info);
         }
 
-        return QColor(r,g,b);
+        return final;
 }
 
 
@@ -51,19 +48,22 @@ QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size,Sample
             image.setPixel(i, j, (shaderay(world, ray)).rgb());
             */
             //dodajemy sampling
-            QColor Color;
+
             Vector3 final(0,0,0);
+            MyColor total_color;
             for(int k=0;k<distributor.getSampleCout();++k){
                 Vector2 sample=distributor.Single();
                 Vector2 pic_coords(
                             ((double)(i+sample.x)/(double)image_size.width())*2-1,
                             ((double)(j+sample.x)/(double)image_size.height())*2-1);
                 VRay rayt= camera.GetRayTo(pic_coords);
-                Color=shaderay(world,rayt);
-                final=final+Vector3(Color.red(),Color.green(),Color.blue())/(double)distributor.getSampleCout();
+
+
+                total_color= total_color + shaderay(world,rayt)/(double)distributor.getSampleCout();
+                //final=final+Vector3(Color.red(),Color.green(),Color.blue())
             }
-            Color.setRgb((int)final.getX(),(int)final.getY(),(int)final.getZ());
-            image.setPixel(i,j,Color.rgb());
+            //Color.setRgb((int)final.getX(),(int)final.getY(),(int)final.getZ());
+            image.setPixel(i,j,(MyColor::strip_color(total_color)).rgb());
 
         }
 

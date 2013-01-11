@@ -15,16 +15,16 @@ class GeometricObject {
         /**funkcja sprawdzająca czy promień trafił w figurę*/
         virtual bool  hit_test(VRay ray, double &distance, Vector3 &normal);
         /**funkcja zwracająca kolor figury*/
-        QColor getColor();
+        MyColor getColor();
         /**funkcja ustawiająca kolor figury*/
-        void setColor(QColor newColor);
+        void setColor(MyColor newColor);
         /**funkcja zwracająca materiał figury*/
         Material *get_material();
 
     protected:
 
         //kolor figury
-        QColor color;
+        MyColor color;
         //materiał
         Material *material;
 };

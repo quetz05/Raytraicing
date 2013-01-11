@@ -3,6 +3,7 @@
 
 #include <QColor>
 #include "point_light.h"
+#include "mycolor.h"
 
 class HitInfo;
 
@@ -11,7 +12,7 @@ class Material{
 public:
 
     /**metoda tworząca blask materiału*/
-    virtual QColor radiance(PointLight, const HitInfo&)=0;
+    virtual MyColor radiance(PointLight, const HitInfo&)=0;
 
 };
 
@@ -21,16 +22,16 @@ class PerfectDiffuse: public Material{
     public:
 
         /**konstruktor tworzący materiał danego koloru*/
-        PerfectDiffuse(QColor c): color(c){}
+        PerfectDiffuse(MyColor c): color(c){}
         /**przeciążona metoda tworząca blask materiału*/
-        QColor radiance(PointLight, const HitInfo &);
+        MyColor radiance(PointLight, const HitInfo &);
 
 
 
     private:
 
         /**kolor materiału*/
-        QColor color;
+        MyColor color;
 
 };
 
@@ -40,13 +41,13 @@ class Phong : public Material{
     public:
 
         /**konstruktor klasy*/
-        Phong(QColor, double, double,double);
-        QColor radiance(PointLight light,const HitInfo&);
+        Phong(MyColor, double, double,double);
+        MyColor radiance(PointLight light,const HitInfo&);
         double phong_factor(Vector3, Vector3 , Vector3);
 
          private:
              /**kolor materiału*/
-             QColor color;
+             MyColor color;
              double diffuse_coeff;
              double specular;
              double specular_exponent;

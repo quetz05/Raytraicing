@@ -5,7 +5,7 @@
 
 
 /**definicja konstruktora klasy World*/
-World::World(QColor background){
+World::World(MyColor background){
     this->background_color=background;
 
 }
@@ -22,7 +22,7 @@ void World::add_light(PointLight light){
 
 
 /**definicja metody zwracającaej kolor tła*/
-QColor World::get_bg_color(){
+MyColor World::get_bg_color(){
    return background_color;
 }
 

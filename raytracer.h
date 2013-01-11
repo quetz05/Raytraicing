@@ -14,7 +14,7 @@ class Raytracer {
     /**tworzenie obrazu wynikowego*/
     QImage RayTrace(World world, Vcamera &camera, QSize image_size, Sampler distributor);
     /**funkcja sumująca światło*/
-    QColor shaderay(World world, VRay ray);
+    MyColor shaderay(World world, VRay ray);
 
 
 };

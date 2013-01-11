@@ -19,15 +19,15 @@ int main(int argc, char *argv[])
     Material *blue_mat = new PerfectDiffuse(QColor(0,0,255));
     Material *gray_mat = new PerfectDiffuse(QColor(84,84,84));
 
-    Material *phong_blue_mat = new Phong(QColor(0, 255, 255) , 0.8, 1, 30);
+    Material *phong_blue_mat = new Phong(QColor(135, 206, 250) , 0.8, 1, 30);
     Material *phong_gray_mat = new Phong(QColor(140, 140, 140) , 0.8, 1, 30);
 
      //dodanie kul
-      world.add(new Sphere(Vector3(-4, 0, 0), 2, red_mat));
+     world.add(new Sphere(Vector3(-4, 0, 0), 2, red_mat));
      world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
-     world.add(new Sphere(Vector3(0, 0, 3), 2, blue_mat));
+     world.add(new Sphere(Vector3(0, 0, 3), 2, green_mat));
 
-     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),gray_mat));
+     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),phong_gray_mat));
 
      PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
 
