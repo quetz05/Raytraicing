@@ -17,6 +17,7 @@ public:
     Vector3 hit_point;
     VRay ray;
     World *world;
+    int depth;
 
 };
 

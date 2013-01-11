@@ -1,5 +1,5 @@
-
 #include"point_light.h"
+#define _USE_MATH_DEFINES
 #include<math.h>
 Vector3 PointLight::get_position(){
     if(radius==0)return center;

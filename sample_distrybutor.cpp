@@ -1,4 +1,6 @@
 #include"sample_distrybutor.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 Vector2 SquareDistributor::MapSample(Vector2 v){
     return v;
