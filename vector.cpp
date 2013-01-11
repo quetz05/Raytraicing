@@ -25,3 +25,12 @@ Vector3 Vector3::reflect(Vector3 vector, Vector3 normal){
     double dot = normal.dot(vector);
     return normal*dot*2 - vector;
 }
+
+Vector3 Vector3::contrary(Vector3 vector){
+    double x= -(vector.getX());
+    double y= -(vector.getY());
+    double z= -(vector.getZ());
+
+    Vector3 ret(x,y,z);
+    return ret;
+}

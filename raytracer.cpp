@@ -14,9 +14,8 @@ QColor Raytracer::shaderay(World world, VRay ray){
 
         Material *material = info.hit_object->get_material();
 
-        double r;
-        double g;
-        double b;
+        double r,g,b;
+
 
         for(int i=0; i<light_list.size();i++){
             if (world.obstacles(info.hit_point, light_list[i].get_position()))

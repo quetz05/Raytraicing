@@ -3,17 +3,20 @@
 #include "hit_info.h"
 #include <math.h>
 
+
+
 /**metoda wymnażająca dwa kolory*/
-QColor multiply_colors (QColor c1, QColor c2){
+QColor color_multiply (QColor c1, QColor c2, double multiply=1){
 
-    return QColor((c1.red()*c2.red())/255,(c1.green()*c2.green())/255,(c1.blue()*c2.blue())/255);
+    qreal r = (c1.red()*c2.red()*multiply/255);
+    qreal g =(c1.green()*c2.green()*multiply/255);
+    qreal b =(c1.blue()*c2.blue()*multiply/255);
 
-}
 
-/**metoda wymnażająca kolor i liczbę*/
-QColor multiply_color (QColor c1, double multiply){
 
-    return QColor((c1.red()*multiply)/255,(c1.green()*multiply)/255,(c1.blue()*multiply)/255);
+    QColor ret(r,g,b);
+
+    return ret;
 
 }
 
@@ -44,9 +47,8 @@ QColor PerfectDiffuse::radiance(PointLight light, const HitInfo &hit){
     if (diffuse_factor < 0)
         return QColor(0,0,0);
 
-    QColor ret ((light.get_color().red()*color.red()*diffuse_factor)/255,
-                (light.get_color().green()*color.green()*diffuse_factor)/255,
-                (light.get_color().blue()*color.blue()*diffuse_factor)/255);
+
+    QColor ret = color_multiply(light.get_color(),color, diffuse_factor);
 
 
     //radiancja jako iloczyn 3 składowych: koloru światła, koloru materiału i współczynnika rozproszenia
@@ -71,18 +73,25 @@ QColor Phong::radiance(PointLight light,const HitInfo& hit){
     if (diffuse_factor < 0)
         return QColor(0,0,0);
 
+    double multiply = diffuse_factor * diffuse_coeff;
 
-
-    QRgb result = multiply_color(multiply_colors(light.get_color(), color), diffuse_factor * diffuse_coeff).rgb();
+    QColor result = color_multiply(light.get_color(), color, multiply).rgb();
 
     double phong;
 
     phong = phong_factor(in_direction, hit.normal, Vector3::contrary(hit.ray.direction));
 
-    if (phong != 0)
-        result += multiply_color(color,  specular * phong).rgb();
+    if (phong != 0){
 
-    return QColor(result);
+        double r = light.get_color().red() * phong*specular/255 +result.red();
+        double g = light.get_color().green()* phong*specular/255 +result.green();
+        double b = light.get_color().blue()* phong*specular/255 +result.blue();
+
+
+        return QColor(r,g,b);
+    }
+
+    return result;
 
 }
 
