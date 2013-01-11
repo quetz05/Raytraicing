@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
      //dodanie kul
      world.add(new Sphere(Vector3(-4, 0, 0), 2, ref_red_mat));
-     world.add(new Sphere(Vector3(4, 0, 0), 2, ref_blue_mat));
+     world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
      world.add(new Sphere(Vector3(0, 0, 3), 2, ref_green_mat));
 
      world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),ref_gray_mat));
@@ -40,12 +40,12 @@ int main(int argc, char *argv[])
      Sampler distributor(gener,dist,1,60);
 
      //PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
-     PointLight light(Vector3(0,5,-5), MyColor(1,1,1), &distributor,2);
+     PointLight light(Vector3(0,10,-10), MyColor(1,1,1), &distributor,2);
      world.add_light(light);
 
 
      //Orthogonal camera(Vector3(0, 0, -5), 0, Vector2(5, 5));
-     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+    PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
      //LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
      Raytracer tracer(5);
 
