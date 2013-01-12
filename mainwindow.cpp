@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow){
     ui->setupUi(this);
+
+    connect(ui->save_butt, SIGNAL(clicked()), this, SLOT(save_image()));
 }
 
 MainWindow::~MainWindow(){
@@ -14,13 +16,18 @@ MainWindow::~MainWindow(){
 
 }
 
-void MainWindow::show_image(QImage& image){
+void MainWindow::show_image(){
 
-    QWidget* widget = centralWidget();
-    QLayout* layout = new QHBoxLayout();
-    QLabel* label = new QLabel(this);
+    ui->graph1->resize(image.width()+5, image.height()+5);
+    QGraphicsScene* scene = new QGraphicsScene();
+    ui->graph1->setScene(scene);
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    scene->addItem(item);
+    ui->graph1->show();
 
-    widget->setLayout(layout);
-    layout->addWidget(label);
-    label->setPixmap(QPixmap::fromImage(image));
+
+}
+
+void MainWindow::save_image(){
+        image.save("raytracer.png");
 }

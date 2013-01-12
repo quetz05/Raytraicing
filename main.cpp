@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
      Sampler distributor1(gener1,dist1,1,60,0);
 
      //PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
-    // PointLight light(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), &distributor,0.5);
-    // world.add_light(light);
+     PointLight light(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), &distributor,0.5);
+     world.add_light(light);
 
 
      //Orthogonal camera(Vector3(0, 1, -10), 0, Vector2(5, 5));
@@ -60,10 +60,12 @@ int main(int argc, char *argv[])
     QImage image = tracer.RayTrace(world, camera, QSize(800, 600),&distributor);
 
 
+
     QApplication a(argc, argv);
     MainWindow w;
+    w.add_image(image);
 
-    w.show_image(image);
+    w.show_image();
     w.show();
     
     return a.exec();
