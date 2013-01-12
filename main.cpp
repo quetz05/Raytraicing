@@ -33,11 +33,11 @@ int main(int argc, char *argv[])
      world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
      world.add(new Sphere(Vector3(0, 0, 3), 2, ref_green_mat));
 
-     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),gray_mat));
+     world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),ref_gray_mat));
 
      JitteredGenerator gener(0);
      SquareDistributor dist;
-     Sampler distributor(gener,dist,512,60);
+     Sampler distributor(gener,dist,1,60);
 
      //PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
      PointLight light(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), &distributor,0.5);

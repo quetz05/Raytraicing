@@ -69,7 +69,7 @@ bool World::obstacles(Vector3 a, Vector3 b){
 
     //odl. od punktu cieniowanego do punktu światła
     Vector3 vector_ab = b - a;
-    double distance_ab = vector_ab.getLength();
+    double distance_ab = vector_ab.get_length();
     double distance = HUGER;
 
     //promień z cieniowanego punktu do światła

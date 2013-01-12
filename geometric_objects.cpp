@@ -37,9 +37,9 @@ bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
 
     //obliczanie współczynników równania kwadratowego
     //na podstawie przekształceń równań na promień i na kulę
-    double a = ray.direction.getLengthSq();
+    double a = ray.direction.get_length_sq();
     double b = (distance*2).dot(ray.direction);
-    double c = distance.getLengthSq() - radius*radius;
+    double c = distance.get_length_sq() - radius*radius;
 
     //obliczenie delty
     double delta = b*b-4*a*c;
