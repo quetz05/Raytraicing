@@ -3,6 +3,7 @@
 Sampler::Sampler(VSampleGenerator &sampler, VSampleDistributor &mapper, int sampleCt, int setCt, int seed){
     this->seed=seed;
     this->sampleCout=sampleCt;
+    this->setCout=setCt;
     for(int i=0;i<setCt;++i){
         Vector2* samples = new Vector2[sampleCt];
         sampler.sample(samples,sampleCt);// tu losujemy ilość próbek
@@ -18,6 +19,7 @@ Sampler::Sampler(VSampleGenerator &sampler, VSampleDistributor &mapper, int samp
 
 Sampler::~Sampler(){
     for(int i =0;i<this->setCout;++i){
+
         delete [] sets[i];
     }
 }
@@ -27,7 +29,7 @@ Vector2 Sampler::Single(){
     sampleNdx++;
     if(sampleNdx>=sampleCout){
         sampleNdx=0;
-        setNdx= rand()/RAND_MAX;
+        setNdx= (rand()/RAND_MAX)*setCout;
     }
     return sample;
 }
