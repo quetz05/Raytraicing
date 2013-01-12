@@ -5,7 +5,7 @@
 #include "ray.h"
 #include <QColor>
 #include "materials.h"
-#include"mycolor.h"
+#include "mycolor.h"
 
 /**abstrakcyjna klasa bazowa figury geometrycznej*/
 class GeometricObject{

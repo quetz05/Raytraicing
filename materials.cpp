@@ -4,6 +4,7 @@
 #include <math.h>
 #include "raytracer.h"
 #include<iostream>
+#include "ray.h"
 
 
 
@@ -108,7 +109,7 @@ MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
 }
 
 
-MyColor Phong::shade( Raytracer &tracer,  HitInfo &hit){
+MyColor Phong::shade(Raytracer &tracer,  HitInfo &hit){
 
     MyColor total_color(0,0,0);
 
@@ -165,5 +166,73 @@ MyColor Reflective::shade(Raytracer &tracer, HitInfo &hit){
 
     return radiance;
 
+}
+
+
+
+Transparent::Transparent(MyColor ncolor, double ndiffuse, double nspecular,double nexponent, double nreflection, double nrefraction, double ntransmission){
+        color = ncolor;
+        direct = Phong(color, ndiffuse, nspecular, nexponent);
+        transmission = ntransmission;
+        reflection = nreflection;
+        specular = nspecular;
+        refraction = nrefraction;
+}
+
+
+
+MyColor Transparent::shade(Raytracer &tracer, HitInfo &hit){
+
+
+    MyColor final = direct.shade(tracer, hit);
+
+    Vector3 to_camera_direction = Vector3::contrary(hit.ray.direction);
+
+    double cos_incident_angle = hit.normal.dot(to_camera_direction);
+
+    double eta = cos_incident_angle > 0 ? refraction : 1 / refraction;
+
+    double refraction_coeff = find_refraction_coeff(eta, cos_incident_angle);
+
+    VRay reflected_ray(hit.hit_point, Vector3::reflect(to_camera_direction, hit.normal));
+
+    MyColor reflection_color = color * reflection;
+
+    if (is_total_internal_reflection(refraction_coeff))
+        final = final + tracer.shaderay(*hit.world, reflected_ray, hit.depth);
+    else
+    {
+        VRay transmitted_ray = compute_transmission_direction(hit.hit_point, to_camera_direction, hit.normal, eta, sqrt(refraction_coeff), cos_incident_angle);
+        MyColor transmission_color = compute_transmission_color(eta);
+        final = final + reflection_color * tracer.shaderay(*hit.world, reflected_ray, hit.depth);
+        final = final + transmission_color * tracer.shaderay(*hit.world, transmitted_ray, hit.depth);
+    }
+
+    return final;
+
+
+}
+
+MyColor Transparent::compute_transmission_color(double eta){
+    return ((MyColor(1,1,1) * transmission) / (eta * eta));
+}
+
+double Transparent::find_refraction_coeff(double eta, double cos_incident_angle){
+    return (1-(1-cos_incident_angle*cos_incident_angle)/(eta*eta));
+}
+
+bool Transparent::is_total_internal_reflection(double refraction_coeff){
+    return refraction_coeff < 0;
+}
+
+VRay Transparent::compute_transmission_direction(Vector3 hit_point, Vector3 to_camera_direction, Vector3 normal, double eta, double cos_transmitted_angle, double cos_incident_angle){
+    if (cos_incident_angle < 0){
+        normal = Vector3::contrary(normal);
+        cos_incident_angle = -cos_incident_angle;
+    }
+
+    Vector3 direction = (Vector3::contrary(to_camera_direction) / eta)- (normal *(cos_transmitted_angle - cos_incident_angle / eta));
+
+    return VRay(hit_point, direction);
 }
 

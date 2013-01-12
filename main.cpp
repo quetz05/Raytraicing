@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
     Material *phong_blue_mat = new Phong(QColor(135, 206, 250) , 0.8, 1, 30);
     Material *phong_gray_mat = new Phong(QColor(140, 140, 140) , 0.8, 1, 30);
 
+    Material *trans_blue_mat = new Transparent(QColor(135, 206, 250), 0.1, 0, 0, 0.3, 1.05, 0.9);
+
 
     Material *ref_red_mat = new Reflective(QColor(255,72,71), 0.4, 1, 300, 0.6);
     Material *ref_green_mat = new Reflective(QColor(173,255,47), 0.4, 1, 300, 0.6);
@@ -32,6 +34,8 @@ int main(int argc, char *argv[])
      world.add(new Sphere(Vector3(-4, 0, 0), 2, ref_red_mat));
      world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
      world.add(new Sphere(Vector3(0, 0, 3), 2, ref_green_mat));
+
+     world.add(new Sphere(Vector3(0, 0, -1), 1, trans_blue_mat));
 
      world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),ref_gray_mat));
 
@@ -45,8 +49,8 @@ int main(int argc, char *argv[])
 
 
      //Orthogonal camera(Vector3(0, 1, -10), 0, Vector2(5, 5));
-     //PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-     LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
+     PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+     //LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
      Raytracer tracer(5);
 
     // Raytracing!
