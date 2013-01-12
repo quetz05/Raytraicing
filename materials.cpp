@@ -3,7 +3,7 @@
 #include "hit_info.h"
 #include <math.h>
 #include "raytracer.h"
-
+#include<iostream>
 
 
 
@@ -110,7 +110,7 @@ MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
 
 MyColor Phong::shade( Raytracer &tracer,  HitInfo &hit){
 
-    MyColor total_color;
+    MyColor total_color(0,0,0);
 
     QList<PointLight> lights_list = hit.world->get_lights();
 

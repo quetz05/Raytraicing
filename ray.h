@@ -11,7 +11,7 @@ class VRay{
 public:
     inline VRay(Vector3 &origin, Vector3 &direction){
         this->origin = origin;
-        this->direction = direction;
+        this->direction = direction.normalized();
     }
 
     inline VRay(){
