@@ -193,8 +193,8 @@ MyColor Transparent::shade(Raytracer &tracer, HitInfo &hit){
     double eta = cos_incident_angle > 0 ? refraction : 1 / refraction;
 
     double refraction_coeff = find_refraction_coeff(eta, cos_incident_angle);
-
-    VRay reflected_ray(hit.hit_point, Vector3::reflect(to_camera_direction, hit.normal));
+    Vector3 v=Vector3::reflect(to_camera_direction, hit.normal);
+    VRay reflected_ray(hit.hit_point, v);
 
     MyColor reflection_color = color * reflection;
 

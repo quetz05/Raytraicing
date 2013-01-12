@@ -10,8 +10,8 @@ class PointLight{
 
     public:
         /**konstruktor tworzący światło punktowe o danym kolorze w danym miejscu*/
-    PointLight(Vector3 n_position,MyColor n_color):color(n_color),center(n_position),radius(0),distributor(NULL){}
-    PointLight(Vector3 n_position, MyColor n_color,Sampler* dist,double radiuss):
+    PointLight(Vector3 n_position,MyColor n_color):color(n_color),center(n_position),radius(0){}
+    PointLight(Vector3 n_position, MyColor n_color,Sampler dist,double radiuss):
         center(n_position),color(n_color),radius(radiuss),distributor(dist){}
         /**konstruktor kopiujący*/
     PointLight(const PointLight &light):center(light.center), color(light.color),radius(light.radius),distributor(light.distributor){}
@@ -29,7 +29,7 @@ class PointLight{
         /**kolor światła*/
         MyColor color;
         double radius;
-        Sampler* distributor;
+        Sampler distributor;
 
 };
 

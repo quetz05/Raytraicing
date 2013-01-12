@@ -3,7 +3,7 @@
 #include<math.h>
 Vector3 PointLight::get_position(){
     if(radius==0)return center;
-    Vector2 sample = distributor->Single();
+    Vector2 sample = distributor.Single();
     return center+RemapSampleToSphere(sample)*radius;
 }
 
