@@ -1,33 +1,21 @@
 /**Plik źródłowy zawierający definicje funkcji klas obiektów geometrycznych*/
 #include "geometric_objects.h"
 
-/**definicja funkcji getColor obiektu*/
-MyColor GeometricObject::getColor(){
-    return color;
-}
 
+/**definicja metody get_material*/
 Material *GeometricObject::get_material(){
     return material;
 }
 
 
-/**definicja funkcji setColor obiektu*/
-void GeometricObject::setColor(MyColor newColor){
-    color = newColor;
-}
-/**definicja wirtualnej funkcji poniewaz czysto wirtualna nie da nam zrobić listy takich obiektów*/
-bool  GeometricObject::hit_test(VRay ray, double &distance, Vector3 &normal){
-	return false;
-}
-
 /**definicja konstruktora klasy Sphere (Kuli)*/
-Sphere::Sphere(Vector3 newCenter, double newRadius, Material * n_material){
-    center = newCenter;
-    radius = newRadius;
+Sphere::Sphere(Vector3 n_center, double n_radius, Material * n_material){
+    center = n_center;
+    radius = n_radius;
     material = n_material;
 }
 
-/**definicja funkcji HitTest*/
+/**definicja funkcji hit_test dla sfery*/
 bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
 
     //rozwiązanie równania kwadratowego
@@ -70,7 +58,7 @@ bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
     return true;
 }
 
-/**deklaracja konstruktora płaszczyzny*/
+/**definicja konstruktora płaszczyzny*/
 Plane::Plane(Vector3 n_point, Vector3 n_normal, Material * n_material){
 
     point = n_point;
@@ -78,13 +66,15 @@ Plane::Plane(Vector3 n_point, Vector3 n_normal, Material * n_material){
     material = n_material;
 }
 
-/**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
+/**definicja medody hit_test dla płaszczyzny*/
 bool Plane::hit_test(VRay ray, double &distance, Vector3 &out_normal){
 
     //równanie wynikające z podstawienia równania prostej do równania płaszczyzny
     double x = (point - ray.origin).dot(normal)/(ray.direction.dot(normal));
 
+    //jeśli x większy od EPSILON - promień trafił
     if(x>EPSILON){
+
         distance = x;
         out_normal=normal;
         return true;

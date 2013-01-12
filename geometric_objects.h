@@ -7,44 +7,40 @@
 #include "materials.h"
 #include"mycolor.h"
 
-/**klasa bazowa figury geometrycznej*/
-class GeometricObject {
+/**abstrakcyjna klasa bazowa figury geometrycznej*/
+class GeometricObject{
 
     public:
 
-        /**funkcja sprawdzająca czy promień trafił w figurę*/
-        virtual bool  hit_test(VRay ray, double &distance, Vector3 &normal);
-        /**funkcja zwracająca kolor figury*/
-        MyColor getColor();
-        /**funkcja ustawiająca kolor figury*/
-        void setColor(MyColor newColor);
-        /**funkcja zwracająca materiał figury*/
+        /**funkcja sprawdzająca czy dany promień trafił w figurę (na podstawie odległości i normalnej)*/
+        virtual bool hit_test(VRay ray, double &distance, Vector3 &normal)=0;
+        /**funkcja zwracająca materiał z jakiego wykonana jest figura*/
         Material *get_material();
+        /**wirtualny destruktor klasy*/
+        virtual ~GeometricObject(){delete material;}
 
     protected:
 
-        //kolor figury
-        MyColor color;
-        //materiał
+        /**materiał z jakiego figura jest wykonana*/
         Material *material;
 };
 
 /**klasa pochodna figury opisująca sferę (kulę)*/
-class Sphere: public GeometricObject {
+class Sphere: public GeometricObject{
 
     public:
 
-        /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i kolorze*/
-        Sphere(Vector3 newCenter, double newRadius, Material * n_material);
-        /**funkcja sprawdzająca czy promień trafił w seferę*/
-        bool  hit_test(VRay ray, double &distance, Vector3 &normal);
+        /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i materiale wykonania*/
+        Sphere(Vector3 n_center, double n_radius, Material * n_material);
+        /**przeciążona funkcja sprawdzająca czy promień trafił w seferę*/
+        bool hit_test(VRay ray, double &distance, Vector3 &normal);
 
     private:
 
-    /**zmienna określająca środek kuli*/
-    Vector3 center;
-    /**zmienna określająca promień kuli*/
-    double radius;
+        /**zmienna określająca położenie środka kuli*/
+        Vector3 center;
+        /**zmienna określająca długość promienia kuli*/
+        double radius;
 
 };
 
@@ -52,19 +48,30 @@ class Sphere: public GeometricObject {
 class Plane: public GeometricObject {
 
     public:
-    /**konstruktor płaszczyzny*/
-    Plane(Vector3 n_point, Vector3 n_normal, Material * n_material);
-    /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
-    bool  hit_test(VRay ray, double &min_distance, Vector3 &out_normal);
-
+        /**konstruktor tworzący płaszczyznę przechodzącą przez dany punkt, mającą daną normalną i wyknaną z danego materiału*/
+        Plane(Vector3 n_point, Vector3 n_normal, Material * n_material);
+        /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
+        bool  hit_test(VRay ray, double &min_distance, Vector3 &out_normal);
 
 
     private:
-    /**punkt, przez który przechodzi płaszczyzna*/
-    Vector3 point;
-    /**normalna do płaszczyzny*/
-    Vector3 normal;
+        /**punkt, przez który przechodzi płaszczyzna*/
+        Vector3 point;
+        /**normalna do płaszczyzny*/
+        Vector3 normal;
 
+};
+
+
+/**klasa pochodna figury opisująca sześcian*/
+class Cube: public GeometricObject {
+
+    public:
+        /**funkcja sprawdzająca czy promień trafił w sześcian*/
+        bool  hit_test(VRay ray, double &min_distance, Vector3 &normal);
+
+
+    private:
 
 };
 
