@@ -16,18 +16,6 @@ MyColor Raytracer::shaderay(World world, VRay ray, int current_depth){
         Material *material = info.hit_object->get_material();
 
         return material->shade(*this, info);
-
-        /*QList<PointLight> light_list = world.get_lights();
-        MyColor final(0,0,0);
-
-        for(int i=0; i<light_list.size();i++){
-            if (world.obstacles(info.hit_point, light_list[i].get_position()))
-                continue;
-
-            final = final+ material->radiance(light_list[i], info);
-        }
-
-        return final;*/
 }
 
 

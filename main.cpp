@@ -41,14 +41,14 @@ int main(int argc, char *argv[])
 
      JitteredGenerator gener(0);
      SquareDistributor dist;
-     Sampler distributor(gener,dist,16,60,0);
+     Sampler distributor(gener,dist,1,60,0);
      JitteredGenerator gener1(0);
      DiskDistributor dist1;
-     Sampler distributor1(gener1,dist1,16,60,0);
+     Sampler distributor1(gener1,dist1,1,60,0);
 
      //PointLight light(Vector3(0, 5, -5), QColor(255,255,255));
-     PointLight light(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), &distributor,0.5);
-     world.add_light(light);
+    // PointLight light(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), &distributor,0.5);
+    // world.add_light(light);
 
 
      //Orthogonal camera(Vector3(0, 1, -10), 0, Vector2(5, 5));
