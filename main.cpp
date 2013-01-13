@@ -13,21 +13,7 @@ int main(int argc, char *argv[])
     // stworzenie świata
     World world(QColor(135, 206, 250));
 
-    //materiały
-    Material *red_mat = new PerfectDiffuse(QColor(255,0,0));
-    Material *green_mat = new PerfectDiffuse(QColor(0,255,0));
-    Material *blue_mat = new PerfectDiffuse(QColor(0,0,255));
-    Material *gray_mat = new PerfectDiffuse(QColor(84,84,84));
 
-    Material *phong_blue_mat = new Phong(QColor(135, 206, 250) , 0.8, 1, 30);
-    Material *phong_gray_mat = new Phong(QColor(140, 140, 140) , 0.8, 1, 30);
-
-    Material *trans_blue_mat = new Transparent(QColor(135, 206, 250), 0.1, 0, 0, 0.3, 1.05, 0.9);
-
-
-    Material *ref_red_mat = new Reflective(QColor(255,72,71), 0.4, 1, 300, 0.6);
-    Material *ref_green_mat = new Reflective(QColor(173,255,47), 0.4, 1, 300, 0.6);
-    Material *ref_blue_mat = new Reflective(QColor(135, 206, 250), 0.4, 1, 300, 0.6);
     Material *ref_gray_mat = new Reflective(QColor(84,84,84), 0.4, 1, 300, 0.6);
 
      //dodanie kul
@@ -53,7 +39,7 @@ int main(int argc, char *argv[])
 
      //Orthogonal camera(Vector3(0, 1, -10), 0, Vector2(5, 5));
      //PinholeCamera camera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-     LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor1,0.5,11);
+     LensCamera camera (Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor1,0.5,11);
      Raytracer tracer(5);
 
     // Raytracing!

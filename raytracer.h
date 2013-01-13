@@ -12,6 +12,8 @@ class Raytracer {
 
     public:
 
+    Raytracer(){max_depth = 1;}
+
     inline Raytracer(int depth){max_depth=depth;}
 
     //inline int get_max_depth(){return max_depth;}
