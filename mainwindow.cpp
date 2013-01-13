@@ -155,9 +155,7 @@ void MainWindow::add_object(){
 
 
        case light:
-           // world.add_light(new PointLight(Vector3(li_x,li_y,li_z),MyColor(QColor(li_r,li_g,li_b)), sampler,0.5));
-        cout<<"SE ROBIE ŚWIATŁO!"<<endl;
-             world.add_light(PointLight(Vector3(0,5,-5), MyColor(0.5,0.5,0.5), sampler,0.5));
+            world.add_light(PointLight(Vector3(li_x,li_y,li_z), MyColor(QColor(li_r,li_g,li_b)), sampler,0.5));
             obj_counter++;
             ui->ob_counter->display(obj_counter);
             break;
@@ -330,15 +328,15 @@ Material* MainWindow::create_material(){
     switch(material_type){
 
         case perfect_diffuse:
-            return new PerfectDiffuse(MyColor(QColor(mat_r,mat_g,mat_b)));
+            return new PerfectDiffuse(QColor(mat_r,mat_g,mat_b));
         case phong:
-            return new Phong(MyColor(QColor(mat_r,mat_g,mat_b)) , 0.8, 1, 30);
+            return new Phong(QColor(mat_r,mat_g,mat_b) , 0.8, 1, 30);
         case reflective:
-            return new Reflective(MyColor(QColor(mat_r,mat_g,mat_b)), 0.4, 1, 300, 0.6);
+            return new Reflective(QColor(mat_r,mat_g,mat_b), 0.4, 1, 300, 0.6);
         case transparent:
-            return new Transparent(MyColor(QColor(mat_r,mat_g,mat_b)), 0.1, 0, 0, 0.3, 1.05, 0.9);
+            return new Transparent(QColor(mat_r,mat_g,mat_b), 0.1, 0, 0, 0.3, 1.05, 0.9);
         default:
-            return new PerfectDiffuse(MyColor(QColor(mat_r,mat_g,mat_b)));
+            return new PerfectDiffuse(QColor(mat_r,mat_g,mat_b));
 
     }
 
@@ -347,7 +345,7 @@ Material* MainWindow::create_material(){
 Sampler *MainWindow::get_sampler(){
 
     JitteredGenerator gener(0);
-    DiskDistributor dist;
+    SquareDistributor dist;
     Sampler* distributor = new Sampler(gener,dist,samples,60,0);
 
     return distributor;

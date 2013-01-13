@@ -87,7 +87,7 @@ Phong::Phong(){
 
 MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
 
-    MyColor total_color;
+    MyColor total_color(0,0,0);
 
     QList<PointLight> lights_list = hit.world->get_lights();
 
