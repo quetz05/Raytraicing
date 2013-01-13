@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initial_settings();
     hide_adding();
+    sampler = get_sampler();
 
     connect(ui->save_butt, SIGNAL(clicked()), this, SLOT(save_image()));
     connect(ui->save_text, SIGNAL(textChanged(const QString &)), this, SLOT(change_save_text(const QString &)));
@@ -112,6 +113,8 @@ void MainWindow::change_camera(const QString&text){
     else if(text=="Soczewkowa")
         camera_type = lens;
 
+    create_camera();
+
 }
 
 void MainWindow::add_sphere(){
@@ -127,26 +130,8 @@ void MainWindow::world_renew(){
     DiskDistributor dist;
     Sampler distributor(gener,dist,samples,60,0);
 
-    Orthogonal camera1(Vector3(0, 1, -10), 0, Vector2(5, 5));
-    PinholeCamera camera2(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-    LensCamera camera3 (Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
 
-
-    switch(camera_type)
-    {
-        case pinhole:
-            image = tracer.RayTrace(world, camera2, QSize(800, 600),&distributor);
-            break;
-        case orthogonal:
-            image = tracer.RayTrace(world, camera1, QSize(800, 600),&distributor);
-            break;
-        case lens:
-            image = tracer.RayTrace(world, camera3, QSize(800, 600),&distributor);
-            break;
-        default:
-            image = tracer.RayTrace(world, camera2, QSize(800, 600),&distributor);
-            break;
-    }
+    image = tracer.RayTrace(world, *our_camera, QSize(800, 600),sampler);
 
     obj_counter=0;
     ui->ob_counter->display(obj_counter);
@@ -240,6 +225,37 @@ Material* MainWindow::create_material(){
 
 }
 
+void MainWindow::create_camera(){
+
+
+
+
+        switch(camera_type)
+        {
+            case pinhole:
+                our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+                break;
+            case orthogonal:
+                 our_camera = new Orthogonal (Vector3(0, 1, -10), 0, Vector2(5, 5));
+                break;
+            case lens:
+                our_camera = new LensCamera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,sampler,0.5,11);
+                break;
+            default:
+                 our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+                break;
+        }
+}
+
+Sampler *MainWindow::get_sampler(){
+
+    JitteredGenerator gener(0);
+    DiskDistributor dist;
+    Sampler* distributor = new Sampler(gener,dist,samples,60,0);
+
+    return distributor;
+
+}
 
 
 void MainWindow::change_sp_statsr(double val){sph_radius = val;}

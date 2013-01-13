@@ -231,7 +231,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Promień(z)</string>
+     <string>Środek(z)</string>
     </property>
    </widget>
    <widget class="QLabel" name="t_sp_rad">
@@ -426,6 +426,19 @@
      </property>
     </item>
    </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>200</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;B&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
    <zorder>graph1</zorder>
    <zorder>save_text</zorder>
    <zorder>save_butt</zorder>
@@ -456,6 +469,7 @@
    <zorder>delete_world</zorder>
    <zorder>label_9</zorder>
    <zorder>camera</zorder>
+   <zorder>label_6</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

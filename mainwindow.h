@@ -77,6 +77,9 @@ private:
     Material* create_material();
     void create_camera();
     Vcamera* our_camera;
+    Sampler* get_sampler();
+
+    Sampler* sampler;
 
 
 
