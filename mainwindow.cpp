@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initial_settings();
     hide_adding();
-    sampler = get_sampler();
+
 
     connect(ui->save_butt, SIGNAL(clicked()), this, SLOT(save_image()));
     connect(ui->save_text, SIGNAL(textChanged(const QString &)), this, SLOT(change_save_text(const QString &)));
@@ -107,13 +107,11 @@ void MainWindow::change_material(const QString &text){
 void MainWindow::change_camera(const QString&text){
 
     if(text=="Ortogonalna")
-        camera_type = orthogonal;
+         our_camera= new Orthogonal (Vector3(0, 1, -10), 0, Vector2(5, 5));
     else if(text=="Perspektywiczna")
-        camera_type = pinhole;
+        our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
     else if(text=="Soczewkowa")
-        camera_type = lens;
-
-    create_camera();
+        our_camera = new LensCamera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,sampler,0.5,11);
 
 }
 
@@ -152,7 +150,7 @@ void MainWindow::initial_settings(){
     sph_radius = 0;
     material_type = perfect_diffuse;
     obj_counter = 0;
-    camera_type = pinhole;
+    sampler = get_sampler();
 
 
     tracer = Raytracer(5);
@@ -162,8 +160,6 @@ void MainWindow::initial_settings(){
     mat_r = 0;
     mat_g = 0;
     mat_b = 0;
-
-
 
     our_camera= new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
 
@@ -223,28 +219,6 @@ Material* MainWindow::create_material(){
 
     }
 
-}
-
-void MainWindow::create_camera(){
-
-
-
-
-        switch(camera_type)
-        {
-            case pinhole:
-                our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-                break;
-            case orthogonal:
-                 our_camera = new Orthogonal (Vector3(0, 1, -10), 0, Vector2(5, 5));
-                break;
-            case lens:
-                our_camera = new LensCamera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,sampler,0.5,11);
-                break;
-            default:
-                 our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-                break;
-        }
 }
 
 Sampler *MainWindow::get_sampler(){
