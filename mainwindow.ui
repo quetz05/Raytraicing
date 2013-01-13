@@ -312,6 +312,28 @@
      </rect>
     </property>
    </widget>
+   <zorder>graph1</zorder>
+   <zorder>save_text</zorder>
+   <zorder>save_butt</zorder>
+   <zorder>objects_list</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>sp_x</zorder>
+   <zorder>sp_y</zorder>
+   <zorder>sp_z</zorder>
+   <zorder>sp_rad</zorder>
+   <zorder>sampler</zorder>
+   <zorder>label_3</zorder>
+   <zorder>create_world</zorder>
+   <zorder>t_sp_rad</zorder>
+   <zorder>material_list</zorder>
+   <zorder>spinBox</zorder>
+   <zorder>spinBox_2</zorder>
+   <zorder>spinBox_3</zorder>
+   <zorder>t_sp_z</zorder>
+   <zorder>t_sp_y</zorder>
+   <zorder>t_sp_x</zorder>
+   <zorder>create_obj</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

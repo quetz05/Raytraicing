@@ -58,11 +58,7 @@ void MainWindow::change_save_text(const QString &text){
     saving_file_name = text;
 }
 void MainWindow::started_adding_sphere(){
-
-    ui->sp_x->setVisible(true);
-    ui->sp_y->setVisible(true);
-    ui->sp_z->setVisible(true);
-    ui->sp_rad->setVisible(true);
+    show_sphere_stats();
     cout<<"Bede tworzył kule"<<endl;
 }
 
@@ -156,6 +152,7 @@ void MainWindow::show_sphere_stats(){
     ui->t_sp_y->show();
     ui->t_sp_z->show();
     ui->t_sp_rad->show();
+    ui->create_obj->setVisible(true);
 
 
 }
@@ -170,6 +167,7 @@ void MainWindow::hide_adding(){
     ui->t_sp_y->setVisible(false);
     ui->t_sp_z->setVisible(false);
     ui->t_sp_rad->setVisible(false);
+    ui->create_obj->setVisible(false);
 }
 
 
