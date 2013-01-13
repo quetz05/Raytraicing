@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     initial_settings();
-    hide_sphere_stats();
+    hide_adding();
 
     connect(ui->save_butt, SIGNAL(clicked()), this, SLOT(save_image()));
     connect(ui->save_text, SIGNAL(textChanged(const QString &)), this, SLOT(change_save_text(const QString &)));
@@ -87,6 +87,8 @@ void MainWindow::change_adding(const QString &text){
         started_adding_plane();
     else if(text=="Punkt światła")
         started_adding_light();
+    else
+        hide_adding();
 }
 
 void MainWindow::add_sphere(){
@@ -103,7 +105,7 @@ void MainWindow::world_renew(){
     LensCamera camera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,&distributor,0.5,11);
     Raytracer tracer(5);
 
-    // Raytracing!
+
     image = tracer.RayTrace(world, camera, QSize(800, 600),&distributor);
 
     this->show_image();
@@ -119,6 +121,8 @@ void MainWindow::initial_settings(){
     sph_centerY = 1;
     sph_centerZ = 1;
     sph_radius = 1;
+
+
 
     ui->sampler->setRange(1,512);
     ui->sp_x->setRange(-30,30);
@@ -148,11 +152,24 @@ void MainWindow::show_sphere_stats(){
     ui->sp_y->setVisible(true);
     ui->sp_z->setVisible(true);
     ui->sp_rad->setVisible(true);
-    ui->t_sp_x->setVisible(true);
-    ui->t_sp_y->setVisible(true);
-    ui->t_sp_z->setVisible(true);
-    ui->t_sp_rad->setVisible(true);
+    ui->t_sp_x->show();
+    ui->t_sp_y->show();
+    ui->t_sp_z->show();
+    ui->t_sp_rad->show();
 
+
+}
+
+void MainWindow::hide_adding(){
+
+    ui->sp_x->setVisible(false);
+    ui->sp_y->setVisible(false);
+    ui->sp_z->setVisible(false);
+    ui->sp_rad->setVisible(false);
+    ui->t_sp_x->setVisible(false);
+    ui->t_sp_y->setVisible(false);
+    ui->t_sp_z->setVisible(false);
+    ui->t_sp_rad->setVisible(false);
 }
 
 

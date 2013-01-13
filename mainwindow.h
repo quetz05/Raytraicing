@@ -37,9 +37,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void adding_things(QImage &scene, World new_world){image = scene; world = new_world;}
-    void started_adding_sphere();
-    void started_adding_plane();
-    void started_adding_light();
+
+
 
 
 private:
@@ -51,6 +50,10 @@ private:
     void initial_settings();
     void hide_sphere_stats();
     void show_sphere_stats();
+    void hide_adding();
+    void started_adding_sphere();
+    void started_adding_plane();
+    void started_adding_light();
 
 
     int samples;

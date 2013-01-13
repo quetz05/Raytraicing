@@ -61,6 +61,11 @@
     </property>
     <item>
      <property name="text">
+      <string>&lt;wybierz obiekt&gt;</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Sfera</string>
      </property>
     </item>
@@ -240,6 +245,71 @@
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Promień&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="material_list">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>180</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>&lt;wybierz materiał&gt;</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Idealnie rozpraszający</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Phonga</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Modelujący odbicie</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Przezroczysty</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>220</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_2">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>220</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_3">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>220</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>
