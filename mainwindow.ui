@@ -439,6 +439,144 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;B&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="t_pl_x">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(x)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_pl_y">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(y)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_pl_z">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(z)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_pl_nx">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>120</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Normalna(x)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_pl_ny">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>120</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Normalna(y)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_pl_nz">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>120</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Normalna(z)</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_x">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_y">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_z">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_nx">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_ny">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="pl_nz">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>graph1</zorder>
    <zorder>save_text</zorder>
    <zorder>save_butt</zorder>
@@ -470,6 +608,18 @@
    <zorder>label_9</zorder>
    <zorder>camera</zorder>
    <zorder>label_6</zorder>
+   <zorder>t_pl_x</zorder>
+   <zorder>t_pl_y</zorder>
+   <zorder>t_pl_z</zorder>
+   <zorder>t_pl_nx</zorder>
+   <zorder>t_pl_ny</zorder>
+   <zorder>t_pl_nz</zorder>
+   <zorder>pl_x</zorder>
+   <zorder>pl_y</zorder>
+   <zorder>pl_z</zorder>
+   <zorder>pl_nx</zorder>
+   <zorder>pl_ny</zorder>
+   <zorder>pl_nz</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

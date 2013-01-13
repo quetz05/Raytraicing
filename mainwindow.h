@@ -13,6 +13,10 @@
 #include "camera.h"
 #include "raytracer.h"
 
+enum objects{
+    sphere, plane, light, cube
+};
+
 enum materials{
     perfect_diffuse, phong, reflective, transparent
 };
@@ -37,7 +41,7 @@ private slots:
 
     void change_save_text(const QString &text);
     void change_adding(const QString &text);
-    void add_sphere();
+    void add_object();
     void world_renew();
     void change_material(const QString&text);
     void change_camera(const QString&text);
@@ -45,6 +49,12 @@ private slots:
     void change_sp_statsx(double val);
     void change_sp_statsy(double val);
     void change_sp_statsz(double val);
+    void change_pl_statsx(double val);
+    void change_pl_statsy(double val);
+    void change_pl_statsz(double val);
+    void change_pl_statsnx(double val);
+    void change_pl_statsny(double val);
+    void change_pl_statsnz(double val);
     void change_sampler(int val);
     void change_mat_r(int val);
     void change_mat_g(int val);
@@ -67,32 +77,44 @@ private:
     camera camera_type;
     int obj_counter;
     Raytracer tracer;
+    objects adding_object;
 
     void initial_settings();
     void sphere_stats(bool);
+    void plane_stats(bool);
     void hide_adding();
+    void create_camera();
     void started_adding_sphere();
     void started_adding_plane();
     void started_adding_light();
+
     Material* create_material();
-    void create_camera();
+
     Vcamera* our_camera;
     Sampler* get_sampler();
 
     Sampler* sampler;
 
-
-
     int samples;
 
+    //zmienne materiału
     int mat_r;
     int mat_g;
     int mat_b;
 
+    //zmienne sfery
     double sph_centerX;
     double sph_centerY;
     double sph_centerZ;
     double sph_radius;
+
+    //zmienne płaszczyzny
+    double pl_x;
+    double pl_y;
+    double pl_z;
+    double pl_nx;
+    double pl_ny;
+    double pl_nz;
 
 };
 
