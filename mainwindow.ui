@@ -307,7 +307,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="t_mat_r">
     <property name="geometry">
      <rect>
       <x>830</x>
@@ -320,7 +320,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;R&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="t_mat_g">
     <property name="geometry">
      <rect>
       <x>890</x>
@@ -362,7 +362,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Ilość już dodanych obiektów&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="QLabel" name="t_mat">
     <property name="geometry">
      <rect>
       <x>870</x>
@@ -426,7 +426,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="t_mat_b">
     <property name="geometry">
      <rect>
       <x>950</x>
@@ -577,6 +577,144 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="t_li_x">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(x)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_li_y">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(y)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_li_z">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>80</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Punkt(z)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_li_r">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>120</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;R&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_li_g">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>120</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;G&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="t_li_b">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>120</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;B&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="li_r">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="li_y">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="li_b">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="li_x">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="li_g">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>140</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="li_z">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>100</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>graph1</zorder>
    <zorder>save_text</zorder>
    <zorder>save_butt</zorder>
@@ -599,15 +737,15 @@
    <zorder>t_sp_y</zorder>
    <zorder>t_sp_x</zorder>
    <zorder>create_obj</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
+   <zorder>t_mat_r</zorder>
+   <zorder>t_mat_g</zorder>
    <zorder>ob_counter</zorder>
    <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
+   <zorder>t_mat</zorder>
    <zorder>delete_world</zorder>
    <zorder>label_9</zorder>
    <zorder>camera</zorder>
-   <zorder>label_6</zorder>
+   <zorder>t_mat_b</zorder>
    <zorder>t_pl_x</zorder>
    <zorder>t_pl_y</zorder>
    <zorder>t_pl_z</zorder>
@@ -620,6 +758,18 @@
    <zorder>pl_nx</zorder>
    <zorder>pl_ny</zorder>
    <zorder>pl_nz</zorder>
+   <zorder>t_li_x</zorder>
+   <zorder>t_li_y</zorder>
+   <zorder>t_li_z</zorder>
+   <zorder>t_li_r</zorder>
+   <zorder>t_li_g</zorder>
+   <zorder>t_li_b</zorder>
+   <zorder>li_r</zorder>
+   <zorder>li_y</zorder>
+   <zorder>li_b</zorder>
+   <zorder>li_x</zorder>
+   <zorder>li_g</zorder>
+   <zorder>li_z</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

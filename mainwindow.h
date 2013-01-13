@@ -35,9 +35,13 @@ class MainWindow : public QMainWindow{
 
 public slots:
      void show_image();
+     void new_world();
 
 private slots:
+
     void save_image();
+
+
 
     void change_save_text(const QString &text);
     void change_adding(const QString &text);
@@ -45,20 +49,32 @@ private slots:
     void world_renew();
     void change_material(const QString&text);
     void change_camera(const QString&text);
+
     void change_sp_statsr(double val);
     void change_sp_statsx(double val);
     void change_sp_statsy(double val);
     void change_sp_statsz(double val);
+
     void change_pl_statsx(double val);
     void change_pl_statsy(double val);
     void change_pl_statsz(double val);
     void change_pl_statsnx(double val);
     void change_pl_statsny(double val);
     void change_pl_statsnz(double val);
+
     void change_sampler(int val);
+
     void change_mat_r(int val);
     void change_mat_g(int val);
     void change_mat_b(int val);
+
+    void change_li_statsr(int val);
+    void change_li_statsg(int val);
+    void change_li_statsb(int val);
+    void change_li_statsz(double val);
+    void change_li_statsx(double val);
+    void change_li_statsy(double val);
+
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -82,11 +98,13 @@ private:
     void initial_settings();
     void sphere_stats(bool);
     void plane_stats(bool);
+    void light_stats(bool);
     void hide_adding();
     void create_camera();
     void started_adding_sphere();
     void started_adding_plane();
     void started_adding_light();
+
 
     Material* create_material();
 
@@ -115,6 +133,15 @@ private:
     double pl_nx;
     double pl_ny;
     double pl_nz;
+
+    //zmienne światła
+    double li_x;
+    double li_y;
+    double li_z;
+    int li_r;
+    int li_g;
+    int li_b;
+
 
 };
 

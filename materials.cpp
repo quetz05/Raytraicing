@@ -23,7 +23,7 @@ double Phong::phong_factor(Vector3 in_direction, Vector3 normal, Vector3 to_came
 
 
 /**przeciÄ…ĹĽona metoda tworzÄ…ca blask materiaĹ‚u*/
-MyColor PerfectDiffuse::radiance(PointLight light, HitInfo &hit){
+/*MyColor PerfectDiffuse::radiance(PointLight light, HitInfo &hit){
 
     //wektor kierunkowy
     Vector3 in_direction = (light.get_position() - hit.hit_point).normalized();
@@ -42,7 +42,7 @@ MyColor PerfectDiffuse::radiance(PointLight light, HitInfo &hit){
 
     return final;
 
-}
+}*/
 
 Phong::Phong(MyColor n_color, double n_diffuse, double n_specular,double n_specular_e){
      color = n_color;
@@ -59,7 +59,7 @@ Phong::Phong(){
 }
 
 /**definicja metody radiance materiaĹ‚u Phonga*/
-MyColor Phong::radiance(PointLight light, HitInfo& hit){
+/*MyColor Phong::radiance(PointLight light, HitInfo& hit){
 
     Vector3 in_direction = (light.get_position() - hit.hit_point).normalized();
 
@@ -83,7 +83,7 @@ MyColor Phong::radiance(PointLight light, HitInfo& hit){
 
     return result;
 
-}
+}*/
 
 MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
 
@@ -146,11 +146,11 @@ Reflective::Reflective(MyColor ncolor, double ndiffuse, double nspecular,double 
     reflectivity = nreflectivity;
 }
 
-MyColor Reflective::radiance(PointLight light,HitInfo& hit){
+/*MyColor Reflective::radiance(PointLight light,HitInfo& hit){
     MyColor radiance = direct.radiance(light, hit);
 
     return radiance;
-}
+}*/
 
 MyColor Reflective::shade(Raytracer &tracer, HitInfo &hit){
 

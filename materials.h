@@ -16,8 +16,6 @@ class VRay;
 class Material{
     public:
 
-        /**metoda wirtualna tworząca blask materiału*/
-        virtual MyColor radiance(const PointLight, HitInfo&)=0;
         /**metoda wirtualna tworząca cień materiału*/
         virtual MyColor shade(Raytracer &tracer, HitInfo &hit)=0;
 
@@ -35,8 +33,6 @@ class PerfectDiffuse: public Material{
 
         /**konstruktor tworzący materiał danego koloru*/
         PerfectDiffuse(MyColor c){color=c;}
-        /**przeciążona metoda tworząca blask materiału idealnie rozpraszającego*/
-        MyColor radiance(const PointLight, HitInfo &);
         /**przeciążona metoda tworząca cień materiału idealnie rozpraszającego*/
         MyColor shade(Raytracer &tracer, HitInfo &hit);
 };
@@ -50,8 +46,6 @@ class Phong : public Material{
         Phong();
         /**konstruktor klasy tworzący materiał Phonga o konkretnych parametrach*/
         Phong(MyColor, double, double, double);
-        /**przeciążona metoda tworząca blask materiału Phonga*/
-        MyColor radiance(const PointLight, HitInfo&);
         /**metoda wyliczająca współczynnik Phonga*/
         double phong_factor(Vector3, Vector3 , Vector3);
         /**przeciążona metoda tworząca cień materiału Phonga*/
@@ -75,8 +69,6 @@ class Reflective : public Material{
 
         /**konstruktor klasy tworzący materiał modelujący odbicie o danych parametrach*/
         Reflective(MyColor, double, double,double, double);
-        /**przeciążona metoda tworząca blask materiału modelującego odbicie*/
-        MyColor radiance(const PointLight, HitInfo &);
         /**przeciążona metoda tworząca cień materiału modelującego odbicie*/
         MyColor shade(Raytracer &tracer, HitInfo &hit);
 
@@ -95,8 +87,6 @@ class Transparent : public Material
         Transparent(MyColor, double, double,double, double, double , double);
         /**przeciążona metoda tworząca cień materiału przezroczystego*/
         MyColor shade(Raytracer &tracer, HitInfo &hit);
-        /**przeciążona metoda tworząca blask materiału przezroczystego*/
-        MyColor radiance(const PointLight, HitInfo &){return MyColor(1,1,1);};
 
         MyColor compute_transmission_color(double);
 
