@@ -16,7 +16,9 @@ public:
     /**konstruktor klasy World tworzący świat o danym kolorze tła*/
     World(MyColor background);
     /**konstruktor klasy World bezargumentowy*/
-    World();
+    World(): background_color(MyColor(1,1,1)){}
+    /**konstruktor kopiujący klasy World*/
+    World(const World &nw): background_color(nw.background_color),objects(nw.objects),lights(nw.lights) {}
     /**funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject *obj);
     /**funkcja odpowiedzialna za śledzenie promienia*/

@@ -31,11 +31,11 @@ int main(int argc, char *argv[])
     Material *ref_gray_mat = new Reflective(QColor(84,84,84), 0.4, 1, 300, 0.6);
 
      //dodanie kul
-     world.add(new Sphere(Vector3(-4, 0, 0), 2, ref_red_mat));
-     world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
-     world.add(new Sphere(Vector3(0, 0, 3), 2, ref_green_mat));
+    // world.add(new Sphere(Vector3(-4, 0, 0), 2, ref_red_mat));
+    // world.add(new Sphere(Vector3(4, 0, 0), 2, phong_blue_mat));
+    // world.add(new Sphere(Vector3(0, 0, 3), 2, ref_green_mat));
 
-     world.add(new Sphere(Vector3(0, 0, -1), 1, trans_blue_mat));
+     //world.add(new Sphere(Vector3(0, 0, -1), 1, trans_blue_mat));
 
      world.add(new Plane(Vector3(0,-2,0),Vector3(0,1,0),ref_gray_mat));
 
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
-    w.add_image(image);
+    w.adding_things(image, world);
 
     w.show_image();
     w.show();
