@@ -16,7 +16,8 @@ TEMPLATE = app
 
 
 SOURCES += tst_teststest.cpp \
-    vector_test.cpp
+    vector_test.cpp \
+    ../vector.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \

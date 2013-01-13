@@ -13,12 +13,10 @@ private Q_SLOTS:
     void testCase1();
 };
 
-TestsTest::TestsTest()
-{
+TestsTest::TestsTest(){
 }
 
-void TestsTest::testCase1()
-{
+void TestsTest::testCase1(){
     QVERIFY2(true, "Failure");
 }
 
