@@ -15,6 +15,8 @@ public:
 
     /** @brief World konstruktor klasy World tworzący świat o danym kolorze tła*/
     World(MyColor background);
+    /** @brief ~World destruktor*/
+    //~World(){  }
     /** @brief World konstruktor klasy World bezargumentowy*/
     World(): background_color(MyColor(1,1,1)){}
     /** @brief World konstruktor kopiujący klasy World*/

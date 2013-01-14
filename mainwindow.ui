@@ -378,8 +378,8 @@
    <widget class="QPushButton" name="delete_world">
     <property name="geometry">
      <rect>
-      <x>904</x>
-      <y>550</y>
+      <x>910</x>
+      <y>560</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -715,6 +715,29 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="t_li_rad">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>160</y>
+      <width>46</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Promień&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="li_rad">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>180</y>
+      <width>51</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>graph1</zorder>
    <zorder>save_text</zorder>
    <zorder>save_butt</zorder>
@@ -770,6 +793,8 @@
    <zorder>li_x</zorder>
    <zorder>li_g</zorder>
    <zorder>li_z</zorder>
+   <zorder>t_li_rad</zorder>
+   <zorder>li_rad</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

@@ -24,7 +24,7 @@ class HitInfo{
         /**
          * @brief ~HitInfo destruktor klasy HitInfo
          */
-        //~HitInfo(){delete hit_object; delete world;}
+       // ~HitInfo(){delete hit_object; delete world;}
         /**
          * @brief normal zmienna określająca normalną
          */

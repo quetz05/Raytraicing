@@ -100,7 +100,8 @@ private slots:
     void change_li_statsx(double val);
     /** @brief change_li_statsy   zmiana danej zmiennej*/
     void change_li_statsy(double val);
-
+    /** @brief change_li_statsrad   zmiana danej zmiennej*/
+    void change_li_statsrad(double val);
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -205,6 +206,8 @@ private:
     int li_g;
     /** @brief li_b  zmienna światła*/
     int li_b;
+    /** @brief li_b  zmienna światła*/
+    double li_rad;
 
 
 

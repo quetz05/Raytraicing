@@ -51,12 +51,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->li_x, SIGNAL(valueChanged(double)), this, SLOT(change_li_statsx(double)));
     connect(ui->li_y, SIGNAL(valueChanged(double)), this, SLOT(change_li_statsy(double)));
     connect(ui->li_z, SIGNAL(valueChanged(double)), this, SLOT(change_li_statsz(double)));
-
+    connect(ui->li_rad, SIGNAL(valueChanged(double)), this, SLOT(change_li_statsrad(double)));
 
 
 }
 
 MainWindow::~MainWindow(){
+
+    delete sampler;
+    delete our_camera;
     delete ui;
 
 }
@@ -155,13 +158,9 @@ void MainWindow::add_object(){
 
 
        case light:
-            world.add_light(PointLight(Vector3(li_x,li_y,li_z), MyColor(QColor(li_r,li_g,li_b)), sampler,0.5));
+            world.add_light(PointLight(Vector3(li_x,li_y,li_z), MyColor(QColor(li_r,li_g,li_b)), sampler,li_rad));
             obj_counter++;
             ui->ob_counter->display(obj_counter);
-            break;
-
-       case cube:
-
             break;
     }
 }
@@ -213,12 +212,13 @@ void MainWindow::initial_settings(){
     li_r = 0;
     li_g = 0;
     li_b = 0;
+    li_rad = 1;
 
     //zerowanie zmiennych sfery
     sph_centerX = 0;
     sph_centerY = 0;
     sph_centerZ = 0;
-    sph_radius = 0;
+    sph_radius = 1;
 
     //zerowanie zmiennych materiału
     mat_r = 0;
@@ -236,7 +236,7 @@ void MainWindow::initial_settings(){
     ui->sp_x->setRange(-30,30);
     ui->sp_y->setRange(-30,30);
     ui->sp_z->setRange(-30,30);
-    ui->sp_rad->setRange(0,30);
+    ui->sp_rad->setRange(1,30);
     ui->pl_x->setRange(-30,30);
     ui->pl_y->setRange(-30,30);
     ui->pl_z->setRange(-30,30);
@@ -250,6 +250,8 @@ void MainWindow::initial_settings(){
     ui->li_r->setRange(0,255);
     ui->li_g->setRange(0,255);
     ui->li_b->setRange(0,255);
+    ui->li_rad->setRange(1,30);
+
 
 
     obj_counter = 0;
@@ -316,6 +318,8 @@ void MainWindow::light_stats(bool state){
     ui->t_li_r->setVisible(state);
     ui->t_li_g->setVisible(state);
     ui->t_li_b->setVisible(state);
+    ui->t_li_rad->setVisible(state);
+    ui->li_rad->setVisible(state);
     ui->create_obj->setVisible(state);
 }
 
@@ -367,7 +371,7 @@ void MainWindow::change_sp_statsr(double val){sph_radius = val;}
 void MainWindow::change_sp_statsx(double val){sph_centerX = val;}
 void MainWindow::change_sp_statsy(double val){sph_centerY = val;}
 void MainWindow::change_sp_statsz(double val){sph_centerZ = val;}
-void MainWindow::change_sampler(int val){samples=val; sampler = get_sampler();}
+void MainWindow::change_sampler(int val){samples=val; delete sampler; sampler = get_sampler();}
 void MainWindow::change_mat_r(int val){mat_r=val;}
 void MainWindow::change_mat_g(int val){mat_g=val;}
 void MainWindow::change_mat_b(int val){mat_b=val;}
@@ -383,4 +387,4 @@ void MainWindow::change_li_statsz(double val){li_z = val;}
 void MainWindow::change_li_statsr(int val){li_r = val;}
 void MainWindow::change_li_statsg(int val){li_g = val;}
 void MainWindow::change_li_statsb(int val){li_b = val;}
-
+void MainWindow::change_li_statsrad(double val){li_b = val;}
