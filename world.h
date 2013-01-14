@@ -8,39 +8,39 @@
 #include"point_light.h"
 
 
-/**klasa odpowiedzialna za tworzenie świata przedstawianego, który widzi użytkownik*/
+/** @brief World klasa odpowiedzialna za tworzenie świata przedstawianego, który widzi użytkownik*/
 class World
 {
 public:
 
-    /**konstruktor klasy World tworzący świat o danym kolorze tła*/
+    /** @brief World konstruktor klasy World tworzący świat o danym kolorze tła*/
     World(MyColor background);
-    /**konstruktor klasy World bezargumentowy*/
+    /** @brief World konstruktor klasy World bezargumentowy*/
     World(): background_color(MyColor(1,1,1)){}
-    /**konstruktor kopiujący klasy World*/
+    /** @brief World konstruktor kopiujący klasy World*/
     World(const World &nw): background_color(nw.background_color),objects(nw.objects),lights(nw.lights) {}
-    /**funkcja dodająca do "świata" obiekty geometryczne*/
+    /** @brief add funkcja dodająca do "świata" obiekty geometryczne*/
     void add(GeometricObject *obj);
-    /**funkcja odpowiedzialna za śledzenie promienia*/
-    HitInfo TraceRay(VRay ray);
-    /**funkcja zwracająca kolor tła*/
+    /** @brief trace_ray funkcja odpowiedzialna za śledzenie promienia*/
+    HitInfo trace_ray(VRay ray);
+    /** @brief get_bg_color funkcja zwracająca kolor tła*/
     MyColor get_bg_color();  
-    /**funkcja dodająca do "świata" punkty światła*/
+    /** @brief add_light funkcja dodająca do "świata" punkty światła*/
     void add_light(PointLight light);
-    /**funkcja szukająca obiektu pomiędzy dwoma punktami - wykorzystywana przy cioniowaniu*/
+    /** @brief obstacles funkcja szukająca obiektu pomiędzy dwoma punktami - wykorzystywana przy cioniowaniu*/
     bool obstacles(Vector3 a, Vector3 b);
-    /**funkcja zwracająca listę świateł*/
+    /** @brief get_lights funkcja zwracająca listę świateł*/
     QList<PointLight> get_lights();
 
 
 
 private:
 
-    /**lista punktów światła znajdujących się w danym świecie*/
+    /** @brief lights lista punktów światła znajdujących się w danym świecie*/
     QList<PointLight> lights;
-    /**lista obiektów geometrycznych znajdujących się w danym świecie*/
+    /** @brief objects lista obiektów geometrycznych znajdujących się w danym świecie*/
     QList<GeometricObject*> objects;
-    /**kolor tła "świata"*/
+    /** @brief background_color kolor tła "świata"*/
     MyColor background_color;
 };
 

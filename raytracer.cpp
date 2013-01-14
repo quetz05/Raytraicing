@@ -7,7 +7,7 @@ MyColor Raytracer::shaderay(World world, VRay ray, int current_depth){
     if (current_depth > max_depth)
         return MyColor(0,0,0);
 
-        HitInfo info = world.TraceRay(ray);
+        HitInfo info = world.trace_ray(ray);
         info.depth = current_depth + 1;
 
         if (info.hit_object == NULL)
@@ -19,8 +19,8 @@ MyColor Raytracer::shaderay(World world, VRay ray, int current_depth){
 }
 
 
-/**definicja metody RayTrace*/
-QImage Raytracer::RayTrace(World world, Vcamera &camera, QSize image_size, Sampler *distributor){
+
+QImage Raytracer::ray_trace(World world, Vcamera &camera, QSize image_size, Sampler *distributor){
 
     //tworzenie zmiennej przechowującej mapę
     QImage image = QImage(image_size.width(), image_size.height(),QImage::Format_RGB32);

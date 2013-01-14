@@ -3,92 +3,91 @@
 #define VECTOR3D
 #include <math.h>
 
-/**klasa wektora trójwymiarowego*/
+/** @brief Vector3 klasa wektora trójwymiarowego*/
 class Vector3{
 
     public:
 
-        /**kontruktor bezargumentowy (tworzy wektor [0,0,0])*/
+        /** @brief Vector3 kontruktor bezargumentowy (tworzy wektor [0,0,0])*/
         Vector3(){x=0;y=0;z=0;}
-        /**kontruktor tworzący wektor trójwymiarowy o określonych współrzędnych [a,b,c]*/
+        /** @brief Vector3 kontruktor tworzący wektor trójwymiarowy o określonych współrzędnych [a,b,c]*/
         Vector3(double a,double b,double c){ x=a; y=b; z=c;}
-        /**kontruktor kopiujący wektor trójwymiarowy*/
+        /** @brief Vector3 kontruktor kopiujący wektor trójwymiarowy*/
         Vector3(const Vector3 &v): x(v.x),y(v.y),z(v.z){}
 
-        /**przeciążenie operatora dodawania dwóch wektorów trójwymiarowych*/
+        /** @brief operator + przeciążenie operatora dodawania dwóch wektorów trójwymiarowych*/
         Vector3 operator +(const Vector3 &vector){return Vector3(this->x + vector.x, this->y + vector.y, this->z + vector.z );}
-        /**przeciążenie operatora odejmowania dwóch wektorów trójwymiarowych*/
+        /** @brief operator - przeciążenie operatora odejmowania dwóch wektorów trójwymiarowych*/
         Vector3 operator -(const Vector3 &vector){return Vector3(this->x - vector.x, this->y - vector.y, this->z - vector.z );}
-        /**przeciążenie operatora mnożenia przez skalar wektorów trójwymiarowych*/
+        /** @brief operator * przeciążenie operatora mnożenia przez skalar wektorów trójwymiarowych*/
         Vector3 operator *(double value){return Vector3(this->x *value, this->y *value, this->z *value);}
-        /**przeciążenie operatora dzielenia przez skalar dwóch wektorów trójwymiarowych*/
+        /** @brief operator / przeciążenie operatora dzielenia przez skalar dwóch wektorów trójwymiarowych*/
         Vector3 operator /(double value){return Vector3(this->x /value, this->y /value, this->z /value);}
-        /**przeciążenie operatora przypisania dla wektorów trójwymiarowych*/
+        /** @brief operator = przeciążenie operatora przypisania dla wektorów trójwymiarowych*/
         Vector3& operator =(Vector3 const &vector);
-        /**przeciążenie operatora porówniania dwóch wektorów trójwymiarowych*/
+        /** @brief operator == przeciążenie operatora porówniania dwóch wektorów trójwymiarowych*/
         bool operator ==(const Vector3 &vector);
 
 
-        /**funkcja zwracająca iloczyn skalarny dwóch wektorów trójwymiarowych*/
+        /** @brief dot funkcja zwracająca iloczyn skalarny dwóch wektorów trójwymiarowych*/
         double dot(Vector3 vector){return (this->x * vector.x + this->y * vector.y + this->z * vector.z);}
-        /**funkcja zwracająca iloczyn wektorowy dwóch wektorów trójwymiarowych*/
+        /** @brief cross funkcja zwracająca iloczyn wektorowy dwóch wektorów trójwymiarowych*/
         Vector3 cross(Vector3 vector){return Vector3(this->y * vector.z - this->z * vector.y, this->z * vector.x - this->x * vector.z, this->x * vector.y - this->y * vector.x);}
 
 
-        /**funkcja zwracająca długość wektora trójwymiarowego*/
+        /** @brief get_length() funkcja zwracająca długość wektora trójwymiarowego*/
         double get_length(){return sqrt(x*x+y*y+z*z);}
-        /**funkcja zwracająca długość podniesioną do kwadratu wektora trójwymiarowego*/
+        /** @brief get_length_sq() funkcja zwracająca długość podniesioną do kwadratu wektora trójwymiarowego*/
         double get_length_sq(){return x*x+y*y+z*z;}
-        /**funkcja zwracająca znormalizowany wektor trójwymiarowy*/
+        /** @brief normalized() funkcja zwracająca znormalizowany wektor trójwymiarowy*/
         Vector3 normalized(){return (*this)/(this->get_length());}
-        /**funkcja odbicia wektora od nromalnej, wyzaczająca wektro odbity*/
+        /** @brief reflect funkcja odbicia wektora od nromalnej, wyzaczająca wektro odbity*/
         static Vector3 reflect(Vector3 vector, Vector3 normal);
-        /**funkcja tworząca wektor przeciwny do danego*/
+        /** @brief contrary funkcja tworząca wektor przeciwny do danego*/
         static Vector3 contrary(Vector3 vector);
 
 
-        /**funkcja zwracająca współrzędną x wektora trójwymiarowego*/
+        /** @brief getX() funkcja zwracająca współrzędną x wektora trójwymiarowego*/
         double getX(){return x;}
-        /**funkcja zwracająca współrzędną y wektora trójwymiarowego*/
+        /** @brief getY() funkcja zwracająca współrzędną y wektora trójwymiarowego*/
         double getY(){return y;}
-        /**funkcja zwracająca współrzędną z wektora trójwymiarowego*/
+        /** @brief getZ() funkcja zwracająca współrzędną z wektora trójwymiarowego*/
         double getZ(){return z;}
-        /**funkcja ustalająca współrzędną x wektora trójwymiarowego*/
+        /** @brief setX funkcja ustalająca współrzędną x wektora trójwymiarowego*/
         void setX(double i) {x = i;}
-        /**funkcja ustalająca współrzędną y wektora trójwymiarowego*/
+        /** @brief setY funkcja ustalająca współrzędną y wektora trójwymiarowego*/
         void setY(double i) {y = i;}
-        /**funkcja ustalająca współrzędną z wektora trójwymiarowego*/
+        /** @brief setZ funkcja ustalająca współrzędną z wektora trójwymiarowego*/
         void setZ(double i) {z = i;}
 
     private:
 
-        /**współrzędna x wektora trójwymiarowego*/
+        /** @brief x współrzędna x wektora trójwymiarowego*/
         double x;
-        /**współrzędna y wektora trójwymiarowego*/
+        /** @brief y współrzędna y wektora trójwymiarowego*/
         double y;
-        /**współrzędna z wektora trójwymiarowego*/
+        /** @brief z współrzędna z wektora trójwymiarowego*/
         double z;
 
 };
 
-/**struktura wektora dwuwymiarowego*/
+/** @brief Vector2 struktura wektora dwuwymiarowego*/
 struct Vector2{
 
-    /**kontruktor tworzący wektor o współrzędnych [a,b]*/
+    /** @brief Vector2 kontruktor tworzący wektor o współrzędnych [a,b]*/
     inline Vector2(double a, double b){x=a;y=b;}
-    /**kontruktor bezargumentowy (tworzy wektor [0,0])*/
+    /** @brief Vector2 kontruktor bezargumentowy (tworzy wektor [0,0])*/
     inline Vector2(): x(0),y(0){}
-    /**przeciążenie operatora mnożenia wektora dwywymiarowego przez wartość*/
+    /** @brief operator* przeciążenie operatora mnożenia wektora dwywymiarowego przez wartość*/
     Vector2 operator*(double val){return Vector2(x*val,y*val);}
-    /**przeciążenie operatora dzielenia wektora dwywymiarowego przez wartość*/
+    /** @brief operator/ przeciążenie operatora dzielenia wektora dwywymiarowego przez wartość*/
     Vector2 operator/(double val){return Vector2(x/val,y/val);}
-    /**kontruktor tworzący wektor dwuwymiarowy o określonych współrzędnych*/
 
 
 
-    /**współrzędna x wektora dwuwymiarowego*/
+    /** @brief x współrzędna x wektora dwuwymiarowego*/
     double x;
-    /**współrzędna y wektora dwuwymiarowego*/
+    /** @brief y współrzędna y wektora dwuwymiarowego*/
     double y;
 };
 

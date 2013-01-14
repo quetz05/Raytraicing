@@ -3,31 +3,59 @@
 #define MYCOLOR_H
 #include <QColor>
 
-/**klasa MyColor tworząca kolor RGB*/
+/**
+ * @brief MyColor klasa tworząca własny format koloru rgb, gdzie każda ze zmiennych (r,g,b) przyjumje wartości od 0 do 1 i jest typu zmiennoprzecinkowego (double)
+ */
 class MyColor{
 
     public:
 
-        /**bezargumentowy konstruktor tworzący kolor (0,0,0)*/
+        /**
+         * @brief MyColor konstruktor bezargumentowy tworzący kolor czarny (0,0,0)
+         */
         MyColor(){r=0;g=0;b=0;}
-        /**konstruktor tworzący kolor (nr,ng,nb)*/
+        /**
+         * @brief MyColor konstruktor
+         * @param nr kolor red
+         * @param ng kolor green
+         * @param nb kolor blue
+         */
         MyColor(double nr, double ng, double nb): r(nr), g(ng), b(nb) {}
-        /**konstruktor tworzący kolor z koloru klasy QColor*/
+        /**
+         * @brief MyColor konstruktor tworzący kolor z formatu QColor
+         * @param color kolor w formacie QColor
+         */
         MyColor(const QColor &color){r=color.red()/255.0; g=color.green()/255.0, b=color.blue()/ 255.0;}
-        /**konstruktor kopiujący obiekt klasy MyColor*/
+        /**
+         * @brief MyColor konstruktor kopiujący
+         * @param color kolor w formacie MyColor
+         */
         MyColor(const MyColor &c): r(c.r),g(c.g),b(c.b){}
 
-        /**przeciążenie operatora dodawania dwóch kolorów*/
+        /**
+         * @brief operator + przeciążanie operatora dodawania dwóch kolorów
+         */
         MyColor operator +(const MyColor &col1){return MyColor(col1.r + this->r, col1.g + this->g, col1.b + this->b);}
-        /**przeciążenie operatora mnożenia koloru przez liczbę*/
+        /**
+         * @brief operator * przeciążenie operatora mnożenia koloru przez liczbę
+         */
         MyColor operator *(double val){return MyColor(this->r * val, this->g  * val, this->b  * val); }
-        /**przeciążenie operatora mnożenia dwóch kolorów*/
+        /**
+         * @brief operator * przeciążenie operatora mnożenia dwóch kolorów
+         */
         MyColor operator *(const MyColor &col1){return MyColor(col1.r * this->r, col1.g * this->g, col1.b * this->b);}
-        /**przeciążenie operatora dzielenia koloru przez liczbę*/
+        /**
+         * @brief operator / przeciążenie operatora dzielenia koloru przez liczbę
+         */
         MyColor operator /(double val){return MyColor(this->r /val, this->g  /  val, this->b  / val);}
 
 
-        /**metoda "obcinająca" kolor jeśli przekracza zakres i zwracająca obiekt klasy QColor*/
+
+        /**
+         * @brief strip_color metoda "obcinająca" kolor jeśli przekracza zakres
+         * @param color kolor w formacie MyColor
+         * @return zwraca obiekt klasy QColor
+         */
         static QColor strip_color(MyColor color){
 
             //sprawdzenie koloru red
@@ -50,11 +78,17 @@ class MyColor{
         }
 
 
-        /**zmienna przechowująca wartość koloru czerwonego (0 - 1)*/
+        /**
+         * @brief r zmienna przechowująca wartość koloru czerwonego (0-1)
+         */
         double r;
-         /**zmienna przechowująca wartość koloru zielonego (0 - 1)*/
+        /**
+         * @brief g zmienna przechowująca wartość koloru zielonego (0-1)
+         */
         double g;
-         /**zmienna przechowująca wartość koloru niebieskiego (0 - 1)*/
+        /**
+         * @brief b zmienna przechowująca wartość koloru niebieskiego (0-1)
+         */
         double b;
 
 

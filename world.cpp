@@ -4,31 +4,31 @@
 
 
 
-/**definicja konstruktora klasy World*/
+
 World::World(MyColor background){
     this->background_color=background;
 
 }
 
-/**definicja metody add klasy World*/
+
 void World::add(GeometricObject *obj){
     objects.push_back(obj);
 }
 
-/**definicja metody add_light klasy World*/
+
 void World::add_light(PointLight light){
     lights.push_back(light);
 }
 
 
-/**definicja metody zwracającaej kolor tła*/
+
 MyColor World::get_bg_color(){
    return background_color;
 }
 
 
-/**definicja metody TraceRay klasy World*/
-HitInfo World::TraceRay(VRay ray){
+
+HitInfo World::trace_ray(VRay ray){
 
     //rezultat śledzenie promienia
     HitInfo result;
@@ -59,12 +59,12 @@ HitInfo World::TraceRay(VRay ray){
     return result;
 }
 
-/**definicja funkcji get_lights*/
+
 QList<PointLight> World::get_lights(){
     return lights;
 }
 
-/**definicja metody obstacles*/
+
 bool World::obstacles(Vector3 a, Vector3 b){
 
     //odl. od punktu cieniowanego do punktu światła

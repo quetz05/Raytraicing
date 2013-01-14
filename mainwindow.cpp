@@ -170,7 +170,7 @@ void MainWindow::world_renew(){
 
     //sampler=get_sampler();
 
-    image = tracer.RayTrace(world, *our_camera, QSize(800, 600),sampler);
+    image = tracer.ray_trace(world, *our_camera, QSize(800, 600),sampler);
 
     obj_counter=0;
     ui->ob_counter->display(obj_counter);
