@@ -7,67 +7,124 @@
 #include "materials.h"
 #include "mycolor.h"
 
-/**abstrakcyjna klasa bazowa figury geometrycznej*/
+/**
+ * @brief GeometricObject abstrakcyjna klasa bazowa figury geometrycznej
+ */
 class GeometricObject{
 
     public:
 
-        /**funkcja sprawdzająca czy dany promień trafił w figurę (na podstawie odległości i normalnej)*/
+        /**
+         * @brief hit_test funkcja sprawdzająca czy dany promień trafił w figurę
+         * @param ray promień
+         * @param distance odległość
+         * @param normlal normalna
+         * @return wartość true/false zależnie czy promień trafił w figurę
+         */
         virtual bool hit_test(VRay ray, double &distance, Vector3 &normal)=0;
-        /**funkcja zwracająca materiał z jakiego wykonana jest figura*/
+        /**
+         * @brief get_material funkcja zwracająca materiał z jakiego wykonana jest figura
+         * @return typ materiału figury
+         */
         Material *get_material();
-        /**wirtualny destruktor klasy*/
+        /**
+         * @brief ~GeometricObject wirtualny destruktor klasy
+         */
         virtual ~GeometricObject(){delete material;}
 
     protected:
 
-        /**materiał z jakiego figura jest wykonana*/
+        /**
+         * @brief material materiał z jakiego figura jest wykonana
+         */
         Material *material;
 };
 
-/**klasa pochodna figury opisująca sferę (kulę)*/
+/**
+ * @brief Sphere klasa opisująca kulę
+ */
 class Sphere: public GeometricObject{
 
     public:
 
-        /**konstruktor klasy Sphere tworzący kulę o konkretnym promieniu, środku i materiale wykonania*/
+        /**
+         * @brief Sphere konstruktor sfery
+         * @param n_center środek kuli
+         * @param n_radius długość promienia kuli
+         * @param n_material typ materiału z jakiego kula jest wykonana
+         */
         Sphere(Vector3 n_center, double n_radius, Material * n_material);
-        /**przeciążona funkcja sprawdzająca czy promień trafił w seferę*/
+        /**
+         * @brief hit_test funkcja sprawdzająca czy dany promień trafił w sferę
+         * @param ray promień
+         * @param distance odległość
+         * @param normlal normalna
+         * @return wartość true/false zależnie czy promień trafił w sferę
+         */
         bool hit_test(VRay ray, double &distance, Vector3 &normal);
 
     private:
 
-        /**zmienna określająca położenie środka kuli*/
+        /**
+         * @brief center środek kuli
+         */
         Vector3 center;
-        /**zmienna określająca długość promienia kuli*/
+        /**
+         * @brief radius długość promienia kuli
+         */
         double radius;
 
 };
 
-/**klasa pochodna figury opisująca płaszczyznę*/
+/**
+ * @brief Plane klasa opisująca płaszczyznę
+ */
 class Plane: public GeometricObject {
 
     public:
-        /**konstruktor tworzący płaszczyznę przechodzącą przez dany punkt, mającą daną normalną i wyknaną z danego materiału*/
+        /**
+         * @brief Plane konstruktor płaszczyzny
+         * @param n_point punkt przez który przechodzi płaszczyzna
+         * @param n_normal normalna płaszczyzny
+         * @param n_material typ materiału z jakiego płaszczyzna jest wykonana
+         */
         Plane(Vector3 n_point, Vector3 n_normal, Material * n_material);
-        /**funkcja sprawdzająca czy promień trafił w płaszczyznę*/
+        /**
+         * @brief hit_test funkcja sprawdzająca czy dany promień trafił w płaszczyznę
+         * @param ray promień
+         * @param distance odległość
+         * @param normlal normalna
+         * @return wartość true/false zależnie czy promień trafił w płaszczyznę
+         */
         bool  hit_test(VRay ray, double &min_distance, Vector3 &out_normal);
 
 
     private:
-        /**punkt, przez który przechodzi płaszczyzna*/
+        /**
+         * @brief point punkt przez który przechodzi płaszczyzna
+         */
         Vector3 point;
-        /**normalna do płaszczyzny*/
+        /**
+         * @brief normal normalna płaszczyzny
+         */
         Vector3 normal;
 
 };
 
 
-/**klasa pochodna figury opisująca sześcian*/
+/**
+ * @brief Cube klasa opisująca sześcian
+ */
 class Cube: public GeometricObject {
 
     public:
-        /**funkcja sprawdzająca czy promień trafił w sześcian*/
+        /**
+         * @brief hit_test funkcja sprawdzająca czy dany promień trafił w sześcian
+         * @param ray promień
+         * @param distance odległość
+         * @param normlal normalna
+         * @return wartość true/false zależnie czy promień trafił w sześcian
+         */
         bool  hit_test(VRay ray, double &min_distance, Vector3 &normal);
 
 

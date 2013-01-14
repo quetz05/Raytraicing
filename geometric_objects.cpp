@@ -2,20 +2,20 @@
 #include "geometric_objects.h"
 
 
-/**definicja metody get_material*/
+
 Material *GeometricObject::get_material(){
     return material;
 }
 
 
-/**definicja konstruktora klasy Sphere (Kuli)*/
+
 Sphere::Sphere(Vector3 n_center, double n_radius, Material * n_material){
     center = n_center;
     radius = n_radius;
     material = n_material;
 }
 
-/**definicja funkcji hit_test dla sfery*/
+
 bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
 
     //rozwiązanie równania kwadratowego
@@ -58,7 +58,7 @@ bool  Sphere::hit_test(VRay ray, double &min_distance, Vector3 &normal){
     return true;
 }
 
-/**definicja konstruktora płaszczyzny*/
+
 Plane::Plane(Vector3 n_point, Vector3 n_normal, Material * n_material){
 
     point = n_point;
@@ -66,7 +66,7 @@ Plane::Plane(Vector3 n_point, Vector3 n_normal, Material * n_material){
     material = n_material;
 }
 
-/**definicja medody hit_test dla płaszczyzny*/
+
 bool Plane::hit_test(VRay ray, double &distance, Vector3 &out_normal){
 
     //równanie wynikające z podstawienia równania prostej do równania płaszczyzny

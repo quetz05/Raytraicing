@@ -168,6 +168,7 @@ void MainWindow::add_object(){
 
 void MainWindow::world_renew(){
 
+    //sampler=get_sampler();
 
     image = tracer.RayTrace(world, *our_camera, QSize(800, 600),sampler);
 
@@ -175,6 +176,8 @@ void MainWindow::world_renew(){
     ui->ob_counter->display(obj_counter);
 
     this->show_image();
+
+
 
 }
 
@@ -364,7 +367,7 @@ void MainWindow::change_sp_statsr(double val){sph_radius = val;}
 void MainWindow::change_sp_statsx(double val){sph_centerX = val;}
 void MainWindow::change_sp_statsy(double val){sph_centerY = val;}
 void MainWindow::change_sp_statsz(double val){sph_centerZ = val;}
-void MainWindow::change_sampler(int val){samples=val;}
+void MainWindow::change_sampler(int val){samples=val; sampler = get_sampler();}
 void MainWindow::change_mat_r(int val){mat_r=val;}
 void MainWindow::change_mat_g(int val){mat_g=val;}
 void MainWindow::change_mat_b(int val){mat_b=val;}
