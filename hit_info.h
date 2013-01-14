@@ -20,11 +20,11 @@ class HitInfo{
         /**
          * @brief HitInfo konstruktor bezargumentowy
          */
-        HitInfo(){hit_object=NULL; world=NULL;}
+        HitInfo();
         /**
          * @brief ~HitInfo destruktor klasy HitInfo
          */
-       // ~HitInfo(){delete hit_object; delete world;}
+        ~HitInfo();
         /**
          * @brief normal zmienna określająca normalną
          */

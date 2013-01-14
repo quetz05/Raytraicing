@@ -24,7 +24,8 @@ math/orthonormal_basis.cpp \
     sample_generator.cpp \
     sample_distrybutor.cpp \
     sampler.cpp \
-    point_light.cpp
+    point_light.cpp \
+    hit_info.cpp
 
 
 HEADERS  += mainwindow.h \
