@@ -22,10 +22,6 @@ class HitInfo{
          */
         HitInfo();
         /**
-         * @brief ~HitInfo destruktor klasy HitInfo
-         */
-        //~HitInfo();
-        /**
          * @brief normal zmienna określająca normalną
          */
         Vector3 normal;
