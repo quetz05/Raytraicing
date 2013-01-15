@@ -131,10 +131,10 @@ void MainWindow::change_camera(const QString&text){
     if(text=="Ortogonalna")
          our_camera= new Orthogonal (Vector3(0, 0, 0), 0, Vector2(5, 5));
     else if(text=="Perspektywiczna")
-        our_camera = new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(1,0.75),1);
+        our_camera = new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,-1,0),Vector2(1,0.75),1);
     else if(text=="Soczewkowa"){
         get_lens_sampler();
-        our_camera = new LensCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(2,1.5),2,lens_sampler,0.5,11);
+        our_camera = new LensCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,-1,0),Vector2(2,1.5),2,lens_sampler,0.5,11);
     }
 }
 
@@ -228,7 +228,7 @@ void MainWindow::initial_settings(){
     mat_b = 0;
 
     //defaultowa kamera
-    our_camera= new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(1,0.75),1);
+    our_camera= new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,-1,0),Vector2(1,0.75),1);
 
     //ustawienie zakeresów
     ui->mat_r->setRange(0,255);
