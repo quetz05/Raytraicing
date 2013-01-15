@@ -1,10 +1,10 @@
 #include "hit_info.h"
 #include "world.h"
 
-HitInfo::~HitInfo(){
+/*HitInfo::~HitInfo(){
     delete hit_object;
     delete world;
-}
+}*/
 
 HitInfo::HitInfo(){
     hit_object=NULL;
