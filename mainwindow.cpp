@@ -5,7 +5,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow), sampler(NULL){
+    ui(new Ui::MainWindow), sampler(NULL), lens_sampler(NULL){
     ui->setupUi(this);
 
 
@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow(){
 
     delete sampler;
+    delete lens_sampler;
     delete our_camera;
     delete ui;
 
@@ -128,13 +129,13 @@ void MainWindow::change_material(const QString &text){
 void MainWindow::change_camera(const QString&text){
 
     if(text=="Ortogonalna")
-         our_camera= new Orthogonal (Vector3(0, 1, -10), 0, Vector2(5, 5));
+         our_camera= new Orthogonal (Vector3(0, 0, 0), 0, Vector2(5, 5));
     else if(text=="Perspektywiczna")
-        our_camera = new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
-    else if(text=="Soczewkowa")
-        our_camera = new LensCamera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,sampler,0.5,11);
-
-
+        our_camera = new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(1,0.75),1);
+    else if(text=="Soczewkowa"){
+        get_lens_sampler();
+        our_camera = new LensCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(2,1.5),2,lens_sampler,0.5,11);
+    }
 }
 
 void MainWindow::add_object(){
@@ -156,6 +157,7 @@ void MainWindow::add_object(){
 
 
        case light:
+            get_sampler();
             world.add_light(PointLight(Vector3(li_x,li_y,li_z), MyColor(QColor(li_r,li_g,li_b)), sampler,li_rad));
             obj_counter++;
             ui->ob_counter->display(obj_counter);
@@ -165,6 +167,7 @@ void MainWindow::add_object(){
 
 void MainWindow::world_renew(){
 
+    get_sampler();
 
     image = tracer.ray_trace(world, *our_camera, QSize(800, 600),sampler);
 
@@ -189,7 +192,9 @@ void MainWindow::initial_settings(){
     material_type = perfect_diffuse;
 
     //tworzenie samplera
-    sampler = get_sampler();
+    get_sampler();
+
+    get_lens_sampler();
 
     //tworzenie tracer'a
     tracer = Raytracer(5);
@@ -223,7 +228,7 @@ void MainWindow::initial_settings(){
     mat_b = 0;
 
     //defaultowa kamera
-    our_camera= new PinholeCamera(Vector3(0,1,-8),Vector3(0,0,0),Vector3(0,-1,0),Vector2(1,0.75),1);
+    our_camera= new PinholeCamera(Vector3(0,0,0),Vector3(0,0,1),Vector3(0,1,0),Vector2(1,0.75),1);
 
     //ustawienie zakeresów
     ui->mat_r->setRange(0,255);
@@ -346,11 +351,21 @@ Material* MainWindow::create_material(){
 
 }
 
-Sampler* MainWindow::get_sampler(){
+void MainWindow::get_sampler(){
 
     JitteredGenerator gener(0);
     SquareDistributor dist;
-    return new Sampler(gener,dist,samples,60,0);
+    delete sampler;
+    sampler = new Sampler(gener,dist,samples,60,0);
+}
+
+void MainWindow::get_lens_sampler(){
+
+    JitteredGenerator gener(0);
+    DiskDistributor dist;
+    delete lens_sampler;
+    lens_sampler = new Sampler(gener,dist,samples,60,0);
+
 }
 
 void MainWindow::new_world(){
@@ -365,7 +380,7 @@ void MainWindow::change_sp_statsr(double val){sph_radius = val;}
 void MainWindow::change_sp_statsx(double val){sph_centerX = val;}
 void MainWindow::change_sp_statsy(double val){sph_centerY = val;}
 void MainWindow::change_sp_statsz(double val){sph_centerZ = val;}
-void MainWindow::change_sampler(int val){samples=val; delete sampler; sampler = get_sampler();}
+void MainWindow::change_sampler(int val){samples=val;}
 void MainWindow::change_mat_r(int val){mat_r=val;}
 void MainWindow::change_mat_g(int val){mat_g=val;}
 void MainWindow::change_mat_b(int val){mat_b=val;}
