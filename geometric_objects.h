@@ -112,24 +112,4 @@ class Plane: public GeometricObject {
 };
 
 
-/**
- * @brief Cube klasa opisująca sześcian
- */
-class Cube: public GeometricObject {
-
-    public:
-        /**
-         * @brief hit_test funkcja sprawdzająca czy dany promień trafił w sześcian
-         * @param ray promień
-         * @param distance odległość
-         * @param normlal normalna
-         * @return wartość true/false zależnie czy promień trafił w sześcian
-         */
-        bool  hit_test(VRay ray, double &min_distance, Vector3 &normal);
-
-
-    private:
-
-};
-
 #endif
