@@ -36,6 +36,7 @@ Phong::Phong(){
 }
 
 MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
+    Q_UNUSED(tracer);
 
     MyColor total_color(0,0,0);
 
@@ -60,6 +61,7 @@ MyColor PerfectDiffuse::shade(Raytracer &tracer, HitInfo &hit){
 
 
 MyColor Phong::shade(Raytracer &tracer,  HitInfo &hit){
+    Q_UNUSED(tracer);
 
     MyColor total_color(0,0,0);
 
