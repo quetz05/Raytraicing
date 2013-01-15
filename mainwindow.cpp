@@ -1,15 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "qgraphicsscene.h"
-#include <iostream>
-
-
-using namespace std;
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow){
+    ui(new Ui::MainWindow), sampler(NULL){
     ui->setupUi(this);
 
 
@@ -138,9 +134,11 @@ void MainWindow::change_camera(const QString&text){
     else if(text=="Soczewkowa")
         our_camera = new LensCamera(Vector3(0,1,-10),Vector3(0,0,0),Vector3(0,-1,0),Vector2(2,1.5),2,sampler,0.5,11);
 
+
 }
 
 void MainWindow::add_object(){
+
 
     switch(adding_object)
     {
@@ -167,7 +165,6 @@ void MainWindow::add_object(){
 
 void MainWindow::world_renew(){
 
-    //sampler=get_sampler();
 
     image = tracer.ray_trace(world, *our_camera, QSize(800, 600),sampler);
 
@@ -212,7 +209,7 @@ void MainWindow::initial_settings(){
     li_r = 0;
     li_g = 0;
     li_b = 0;
-    li_rad = 1;
+    li_rad = 0.5;
 
     //zerowanie zmiennych sfery
     sph_centerX = 0;
@@ -250,7 +247,7 @@ void MainWindow::initial_settings(){
     ui->li_r->setRange(0,255);
     ui->li_g->setRange(0,255);
     ui->li_b->setRange(0,255);
-    ui->li_rad->setRange(1,30);
+    ui->li_rad->setRange(0.5,30);
 
 
 
@@ -349,14 +346,11 @@ Material* MainWindow::create_material(){
 
 }
 
-Sampler *MainWindow::get_sampler(){
+Sampler* MainWindow::get_sampler(){
 
     JitteredGenerator gener(0);
     SquareDistributor dist;
-    Sampler* distributor = new Sampler(gener,dist,samples,60,0);
-
-    return distributor;
-
+    return new Sampler(gener,dist,samples,60,0);
 }
 
 void MainWindow::new_world(){
