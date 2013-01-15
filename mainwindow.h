@@ -157,10 +157,16 @@ private:
     /** @brief our_camera obecna kamera */
     Vcamera* our_camera;
     /** @brief get_sampler pobierz nowy sampler */
-    Sampler* get_sampler();
+    void get_sampler();
+
+    /** @brief get_lens_sampler pobierz nowy sampler dla kamery */
+    void get_lens_sampler();
 
     /** @brief sampler obecny sampler */
     Sampler* sampler;
+
+    /** @brief sampler obecny sampler kamery */
+    Sampler* lens_sampler;
 
     /** @brief samples ilość próbek */
     int samples;
